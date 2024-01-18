@@ -1,4 +1,3 @@
-import { MdSpaceDashboard } from "react-icons/md";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
