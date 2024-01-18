@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export const Customers = () => {
-  return (
-    <div>Customers</div>
-  );
-}
+const Customers = () => {
+  return <div>Customers</div>;
+};
+
+export default Customers;

@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export const Inventory = () => {
-  return (
-    <div>Inventory</div>
-  )
-}
+const Inventory = () => {
+  return <div>Inventory</div>;
+};
+
+export default Inventory;
