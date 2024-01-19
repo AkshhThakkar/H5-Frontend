@@ -26,13 +26,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route exact path="/dashboard" element={<HomePage />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/categories" element={<Customers />} />
-          <Route path="/categories" element={<Inventory />} />
-          <Route path="/categories" element={<Products />} />
-          <Route path="/categories" element={<Reports />} />
-          <Route path="/categories" element={<Settings />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
         {
           <Sidebar

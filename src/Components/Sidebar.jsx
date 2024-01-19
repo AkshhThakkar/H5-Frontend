@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   BsCart3,
   BsGrid1X2Fill,
@@ -11,6 +12,39 @@ import {
 } from "react-icons/bs";
 
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
+  const sidebarMenu = [
+    {
+      id: "dashboard",
+      route: "/dashboard",
+      title: "Dashboard",
+      component: BsGrid1X2Fill,
+    },
+    {
+      id: "customers",
+      route: "/customers",
+      title: "Customers",
+      component: BsPeopleFill,
+    },
+    {
+      id: "reports",
+      route: "/reports",
+      title: "Reports",
+      component: BsMenuButtonWideFill,
+    },
+    {
+      id: "settings",
+      route: "/settings",
+      title: "Settings",
+      component: BsFillGearFill,
+    },
+    {
+      id: "inventory",
+      route: "/inventory",
+      title: "Inventory",
+      component: BsListCheck,
+    },
+  ];
+  const WrapperComp = ({ Component }) => <Component className="icon" />;
   return (
     <aside
       id="sidebar"
@@ -25,41 +59,13 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       </div>
 
       <ul className="sidebar-list">
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsGrid1X2Fill className="icon" /> Dashboard
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsFillArchiveFill className="icon" /> Products
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsFillGrid3X3GapFill className="icon" /> Categories
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsPeopleFill className="icon" /> Customers
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsListCheck className="icon" /> Inventory
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsMenuButtonWideFill className="icon" /> Reports
-          </a>
-        </li>
-        <li className="sidebar-list-item">
-          <a href="">
-            <BsFillGearFill className="icon" /> Setting
-          </a>
-        </li>
+        {sidebarMenu.map((data) => (
+          <li className="sidebar-list-item">
+            <Link to={data.route}>
+              <WrapperComp Component={data.component} /> {data.title}
+            </Link>
+          </li>
+        ))}
       </ul>
     </aside>
   );

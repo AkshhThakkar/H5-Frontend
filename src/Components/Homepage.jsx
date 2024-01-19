@@ -4,6 +4,7 @@ import {
   BsFillGrid3X3GapFill,
   BsPeopleFill,
   BsFillBellFill,
+  BsFillPeopleFill,
 } from "react-icons/bs";
 function Home() {
   const productData = [
@@ -17,7 +18,19 @@ function Home() {
       id: "catagories",
       title: "CATEGORIES",
       value: 12,
-      component: BsPeopleFill,
+      component: BsFillGrid3X3GapFill,
+    },
+    {
+      id: "customers",
+      title: "CUSTOMERS",
+      value: 33,
+      component: BsFillPeopleFill,
+    },
+    {
+      id: "alerts",
+      title: "ALERTS",
+      value: 42,
+      component: BsFillBellFill,
     },
   ];
 
@@ -39,20 +52,6 @@ function Home() {
             <h1>{data.value}</h1>
           </div>
         ))}
-        <div className="card">
-          <div className="card-inner">
-            <h3>CUSTOMERS</h3>
-            <BsPeopleFill className="card_icon" />
-          </div>
-          <h1>33</h1>
-        </div>
-        <div className="card">
-          <div className="card-inner">
-            <h3>ALERTS</h3>
-            <BsFillBellFill className="card_icon" />
-          </div>
-          <h1>42</h1>
-        </div>
       </div>
     </main>
   );
