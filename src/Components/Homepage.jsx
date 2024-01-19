@@ -44,7 +44,7 @@ function Home() {
 
       <div className="main-cards">
         {productData.map((data) => (
-          <div className="card">
+          <div className="card" key={data.id}>
             <div className="card-inner">
               <h3>{data.title}</h3>
               <WrapperComp Component={data.component} />

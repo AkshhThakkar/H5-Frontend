@@ -60,7 +60,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
 
       <ul className="sidebar-list">
         {sidebarMenu.map((data) => (
-          <li className="sidebar-list-item">
+          <li className="sidebar-list-item" key={data.id}>
             <Link to={data.route}>
               <WrapperComp Component={data.component} /> {data.title}
             </Link>
