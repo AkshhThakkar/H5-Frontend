@@ -2,15 +2,16 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Sidebar from "./Components/Sidebar";
-import Home from "./Components/Homepage";
 import HomePage from "./Components/Homepage";
-import Dashboard from "./Components/Frontend Layouts/Dashboard";
-import Categories from "./Components/Frontend Layouts/Categories";
-import Customers from "./Components/Frontend Layouts/Customers";
-import Inventory from "./Components/Frontend Layouts/Inventory";
-import Products from "./Components/Frontend Layouts/Products";
-import Reports from "./Components/Frontend Layouts/Reports";
-import Settings from "./Components/Frontend Layouts/Settings";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import Categories from "./Components/Categories/Categories";
+import Customers from "./Components/Customers/Customers";
+import Inventory from "./Components/Inventory/Inventory";
+import Products from "./Components/Products/Products";
+import Reports from "./Components/Reports/Reports";
+import Settings from "./Components/Settings/Settings";
+import Login from "./Components/Login/index";
+// import Router from "./Router/Router";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -22,11 +23,12 @@ function App() {
 
   return (
     <div className="grid-container">
-      <Header OpenSidebasr={OpenSidebar} />
       <BrowserRouter>
+        <Header OpenSidebasr={OpenSidebar} />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/dashboard" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/inventory" element={<Inventory />} />
@@ -34,6 +36,7 @@ function App() {
           <Route path="/reports" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>
+        {/* <Router /> */}
         {
           <Sidebar
             openSidebarToggle={openSidebarToggle}
