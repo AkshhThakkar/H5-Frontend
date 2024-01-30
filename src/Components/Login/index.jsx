@@ -8,12 +8,11 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import "./index.css";
 
 const initialValues = {
-  name: "",
+  username: "",
   password: "",
 };
 const Login = () => {
   function handleLogin(payload) {
-    // event.preventDefault();
     axios
       .post("http://192.168.3.237:5760/api/user/login", payload)
       .then((res) => console.log(res))
@@ -42,12 +41,12 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <div className="input-block">
           <label htmlFor="name" className="input-block">
-            Name
+            Username
           </label>
           <input
             id="name"
-            type="name"
-            name="name"
+            type="username"
+            name="username"
             style={{ color: "white" }}
             autoComplete="off"
             placeholder="Username"
