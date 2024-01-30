@@ -48,9 +48,18 @@ body {
   padding: 0 30px 0 30px;
   box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
 }
-
+.search {
+  width: 30%;
+  margin-right: 50;
+}
+.search-box {
+  background-color: #293957;
+  color: white;
+}
 .menu-icon {
   display: none;
+  padding-left: 10%;
+  align-items: center;
 }
 /* End Header  */
 

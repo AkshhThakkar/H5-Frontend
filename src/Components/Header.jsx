@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, useNavigate, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import Login from "../Components/Login";
 import {
   BsFillBellFill,
   BsFillEnvelopeFill,
@@ -7,25 +8,30 @@ import {
   BsSearch,
   BsJustify,
 } from "react-icons/bs";
-import Login from "./Login/index";
 
 function Header({ OpenSidebar }) {
-  // const navigate = useNavigate();
-  // const handleClick = () => navigate("/login");
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Login />} />
+    </Routes>
+  </BrowserRouter>;
+  const navigate = useNavigate();
+  const handleClick = () => navigate("/");
   return (
     <header className="header">
       <div className="menu-icon">
         <BsJustify className="icon" onClick={OpenSidebar} />
       </div>
-      <div className="header-left">
+      <div className="search">
         <BsSearch className="icon" />
+        <input
+          className="search-box"
+          type="text"
+          onChange={(e) => setQuery(e.target.value)}
+        />
       </div>
       <div className="header-right">
-        {/* <BrowserRouter> */}
-        {/* <useNavigate> */}
-        <button onClick={() => handleClick()}>Login</button>
-        {/* </useNavigate>
-        </BrowserRouter> */}
+        <button onClick={() => handleClick()}>Logout</button>
         <BsFillBellFill className="icon" />
         <BsFillEnvelopeFill className="icon" />
         <BsPersonCircle className="icon" />

@@ -1,6 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
+import { useState } from "react";
+import axios from "axios";
 import signUpSchema from "../../Schemas";
+import Dashboard from "../Dashboard/Dashboard";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import "./index.css";
 
 const initialValues = {
@@ -8,18 +12,31 @@ const initialValues = {
   password: "",
 };
 const Login = () => {
-  const [myData, setMyData] = useState([]);
-
+  function handleLogin(payload) {
+    // event.preventDefault();
+    axios
+      .post("http://192.168.3.237:5760/api/user/login", payload)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error.response.data));
+  }
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: signUpSchema,
       onSubmit: (values) => {
+        event.preventDefault();
+        handleLogin(values);
         console.log("🚀 ~ Login ~ values:", values);
       },
     });
   console.log(" file: index.jsx ~ Login ~ errors", errors);
-
+  <BrowserRouter>
+    <Routes>
+      <Route path="/home" element={<Dashboard />} />
+    </Routes>
+  </BrowserRouter>;
+  const navigate = useNavigate();
+  // const handleClick = () => navigate("/dashboard");
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
@@ -31,6 +48,7 @@ const Login = () => {
             id="name"
             type="name"
             name="name"
+            style={{ color: "white" }}
             autoComplete="off"
             placeholder="Username"
             value={values.name}
@@ -49,6 +67,7 @@ const Login = () => {
             id="password"
             type="password"
             name="password"
+            style={{ color: "white" }}
             autoComplete="off"
             placeholder="Password"
             value={values.password}
@@ -63,6 +82,9 @@ const Login = () => {
           <button type="submit" className="input-button">
             Login
           </button>
+          {/* <button onClick={handleClick} type="submit" className="input-button">
+            Login
+          </button> */}
         </div>
       </form>
     </div>

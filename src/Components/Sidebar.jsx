@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import {
   BsCart3,
   BsGrid1X2Fill,
-  BsFillArchiveFill,
-  BsFillGrid3X3GapFill,
   BsPeopleFill,
   BsListCheck,
   BsMenuButtonWideFill,
@@ -26,6 +24,12 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       component: BsPeopleFill,
     },
     {
+      id: "inventory",
+      route: "/inventory",
+      title: "Inventory",
+      component: BsListCheck,
+    },
+    {
       id: "reports",
       route: "/reports",
       title: "Reports",
@@ -36,12 +40,6 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       route: "/settings",
       title: "Settings",
       component: BsFillGearFill,
-    },
-    {
-      id: "inventory",
-      route: "/inventory",
-      title: "Inventory",
-      component: BsListCheck,
     },
   ];
   const WrapperComp = ({ Component }) => <Component className="icon" />;

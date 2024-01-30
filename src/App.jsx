@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Sidebar from "./Components/Sidebar";
-import HomePage from "./Components/Homepage";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Categories from "./Components/Categories/Categories";
 import Customers from "./Components/Customers/Customers";
@@ -24,10 +23,15 @@ function App() {
   return (
     <div className="grid-container">
       <BrowserRouter>
+        {
+          <Sidebar
+            openSidebarToggle={openSidebarToggle}
+            OpenSidebar={OpenSidebar}
+          />
+        }
         <Header OpenSidebasr={OpenSidebar} />
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/login" element={<Login />} />
+          <Route exact path="/" element={<Login />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/customers" element={<Customers />} />
@@ -37,12 +41,6 @@ function App() {
           <Route path="/settings" element={<Settings />} />
         </Routes>
         {/* <Router /> */}
-        {
-          <Sidebar
-            openSidebarToggle={openSidebarToggle}
-            OpenSidebar={OpenSidebar}
-          />
-        }
       </BrowserRouter>
     </div>
   );

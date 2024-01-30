@@ -10,15 +10,22 @@
 .input-block {
   display: flex;
   flex-direction: column;
+  text-decoration: white;
+  background-color: #263043;
   gap: 8px;
   margin: 10px;
+}
+input,
+textarea {
+  background-color: #314467;
+  border: black;
 }
 .input-button {
   padding: 1.2rem 3.2rem;
   outline: none;
   text-transform: uppercase;
   border: 0.5;
-  color: #fff;
+  color: white;
   border-radius: 8px;
   border-color: black;
   background: #204a93;
