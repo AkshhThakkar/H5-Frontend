@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import { useState } from "react";
 import axios from "axios";
-import signUpSchema from "../../Schemas";
+import LoginSchema from "../../Schemas";
 import Dashboard from "../Dashboard/Dashboard";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import "./index.css";
@@ -21,7 +21,7 @@ const Login = () => {
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
-      validationSchema: signUpSchema,
+      validationSchema: LoginSchema,
       onSubmit: (values) => {
         event.preventDefault();
         handleLogin(values);
@@ -29,12 +29,12 @@ const Login = () => {
       },
     });
   console.log(" file: index.jsx ~ Login ~ errors", errors);
-  <BrowserRouter>
-    <Routes>
-      <Route path="/home" element={<Dashboard />} />
-    </Routes>
-  </BrowserRouter>;
-  const navigate = useNavigate();
+  // <BrowserRouter>
+  //   <Routes>
+  //     <Route path="/home" element={<Dashboard />} />
+  //   </Routes>
+  // </BrowserRouter>;
+  // const navigate = useNavigate();
   // const handleClick = () => navigate("/dashboard");
   return (
     <div className="container">

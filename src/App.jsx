@@ -12,6 +12,7 @@ import Settings from "./Components/Settings/Settings";
 import Login from "./Components/Login/index";
 // import Router from "./Router/Router";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Registration from "./Components/Login/Registration";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -32,6 +33,7 @@ function App() {
         <Header OpenSidebasr={OpenSidebar} />
         <Routes>
           <Route exact path="/" element={<Login />} />
+          <Route exact path="/register" element={<Registration />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/customers" element={<Customers />} />
