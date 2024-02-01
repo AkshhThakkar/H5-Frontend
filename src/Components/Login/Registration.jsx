@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import SignupSchema from "../../Schemas/Registration";
 import { Link } from "react-router-dom";
@@ -7,6 +7,8 @@ import axios from "axios";
 const initialValues = {
   username: "",
   email: "",
+  DOB: "",
+  gender: "",
   password: "",
   //   confirm_password: "",
 };
@@ -17,6 +19,10 @@ const Registration = () => {
       .post("http://192.168.3.237:5760/api/user/register", payload)
       .then((res) => console.log(res))
       .catch((error) => console.log(error.response.data));
+  }
+  const [gender, setGender] = useState("Gender");
+  function handleSelect(gender) {
+    setGender(gender.target.value);
   }
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -35,7 +41,16 @@ const Registration = () => {
     "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
     errors
   );
-
+  const genders = [
+    {
+      name: "male",
+      value: "Male",
+    },
+    {
+      name: "female",
+      value: "Female",
+    },
+  ];
   return (
     <div className="container">
       <div className="modal">
@@ -47,18 +62,18 @@ const Registration = () => {
                   Username
                 </label>
                 <input
-                  type="name"
+                  type="username"
                   autoComplete="off"
                   name="username"
                   id="username"
                   placeholder="Username"
                   style={{ color: "white" }}
-                  value={values.name}
+                  value={values.username}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {errors.name && touched.name ? (
-                  <p className="form-error">{errors.name}</p>
+                {errors.username && touched.username ? (
+                  <p className="form-error">{errors.username}</p>
                 ) : null}
               </div>
               <div className="input-block">
@@ -78,6 +93,44 @@ const Registration = () => {
                 />
                 {errors.email && touched.email ? (
                   <p className="form-error">{errors.email}</p>
+                ) : null}
+              </div>
+              <div className="input-block">
+                <label htmlFor="Birthday" className="input-label">
+                  DOB
+                </label>
+                <input
+                  type="date"
+                  autoComplete="off"
+                  name="Birthday"
+                  id="Birthday"
+                  placeholder="DOB"
+                  style={{ color: "white" }}
+                  value={values.DOB}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.DOB && touched.DOB ? (
+                  <p className="form-error">{errors.DOB}</p>
+                ) : null}
+              </div>
+              <div className="input-block">
+                <label htmlFor="field" className="input-label">
+                  Gender
+                </label>
+                <select
+                  className="gender"
+                  onChange={handleSelect}
+                  value={gender}>
+                  <option>--Select Your Gender--</option>
+                  {genders.map((gender) => (
+                    <>
+                      <option value={gender.name}>{gender.value}</option>
+                    </>
+                  ))}
+                </select>
+                {errors.gender && touched.gender ? (
+                  <p className="form-error">{errors.gender}</p>
                 ) : null}
               </div>
               <div className="input-block">
