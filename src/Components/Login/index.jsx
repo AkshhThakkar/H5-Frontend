@@ -61,8 +61,8 @@ const Login = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {errors.name && touched.name ? (
-            <p className="form-error">{errors.name}</p>
+          {errors.username && touched.username ? (
+            <p className="form-error">{errors.username}</p>
           ) : null}
         </div>
         <div className="input-block">

@@ -10,6 +10,8 @@ import Products from "./Components/Products/Products";
 import Reports from "./Components/Reports/Reports";
 import Settings from "./Components/Settings/Settings";
 import Login from "./Components/Login/index";
+import MaybeShowSidebar from "./Components/MaybeShowSidebar";
+import MaybeShowHeader from "./Components/MaybeShowHeader";
 // import Router from "./Router/Router";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Registration from "./Components/Login/Registration";
@@ -24,13 +26,17 @@ function App() {
   return (
     <div className="grid-container">
       <BrowserRouter>
-        {
-          <Sidebar
-            openSidebarToggle={openSidebarToggle}
-            OpenSidebar={OpenSidebar}
-          />
-        }
-        <Header OpenSidebasr={OpenSidebar} />
+        <MaybeShowSidebar>
+          {
+            <Sidebar
+              openSidebarToggle={openSidebarToggle}
+              OpenSidebar={OpenSidebar}
+            />
+          }
+        </MaybeShowSidebar>
+        <MaybeShowHeader>
+          <Header OpenSidebar={OpenSidebar} />
+        </MaybeShowHeader>
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path="/register" element={<Registration />} />

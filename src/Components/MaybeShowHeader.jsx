@@ -6,8 +6,7 @@ const MaybeShowHeader = ({ children }) => {
   const location = useLocation();
   const [showHeader, setShowHeader] = useState(false);
   useEffect(() => {
-    console.log("this is location", location);
-    if (location.pathname === "/login" && location.pathname === "/register") {
+    if (location.pathname === "/" || location.pathname === "/register") {
       setShowHeader(false);
     } else {
       setShowHeader(true);
