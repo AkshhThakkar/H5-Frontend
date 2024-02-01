@@ -172,7 +172,7 @@ const Registration = () => {
               </div> */}
               <div className="modal-buttons">
                 <button className="input-button" type="submit">
-                  Registration
+                  Register
                 </button>
               </div>
             </form>
