@@ -6,17 +6,24 @@ import LoginSchema from "../../Schemas";
 import Dashboard from "../Dashboard/Dashboard";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import "./index.css";
+import { login } from "../../redux/UserSlice";
+import { useDispatch } from "react-redux";
 
 const initialValues = {
   username: "",
   password: "",
 };
+
 const Login = () => {
+  const dispatch = useDispatch();
   function handleLogin(payload) {
     axios
       .post("http://192.168.3.237:5760/api/user/login", payload)
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error.response.data));
+      .then((res) => {
+        console.log(res);
+        dispatch(login(res.data.result));
+      })
+      .catch((error) => console.log(error));
   }
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -78,7 +85,11 @@ const Login = () => {
           ) : null}
         </div>
         <div className="modal-buttons">
-          <button type="submit" className="input-button">
+          <button
+            type="submit"
+            className="input-button"
+            // onSubmit={}
+          >
             Login
           </button>
           {/* <button onClick={handleClick} type="submit" className="input-button">
