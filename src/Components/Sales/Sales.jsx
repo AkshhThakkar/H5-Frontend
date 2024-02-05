@@ -55,7 +55,7 @@ function Inventory() {
 
   return (
     <div class="container-fluid bg-2 text-center">
-      <h1>Inventory Management</h1>
+      <h1>Sales Management</h1>
       <br />
       <div class="row">
         <div class="col-sm-8">
@@ -74,7 +74,7 @@ function Inventory() {
                   type="text"
                   class="form-control"
                   placeholder="Item Name"
-                  style={{ color: "white" }}
+                  style={{ color: "black" }}
                   value={name}
                   onChange={(event) => {
                     setName(event.target.value);
@@ -86,7 +86,7 @@ function Inventory() {
                   type="text"
                   class="form-control"
                   placeholder="Enter Price"
-                  style={{ color: "white" }}
+                  style={{ color: "black" }}
                   value={price}
                   onChange={handlePriceChange}
                 />
@@ -96,7 +96,7 @@ function Inventory() {
                   type="number"
                   class="form-control"
                   placeholder="Enter Qty"
-                  style={{ color: "white" }}
+                  style={{ color: "black" }}
                   value={qty}
                   onChange={handleQuantityChange}
                 />
@@ -106,8 +106,8 @@ function Inventory() {
                   type="text"
                   value={sum}
                   class="form-control"
-                  style={{ color: "white" }}
-                  placeholder="Enter Total"
+                  style={{ color: "black" }}
+                  placeholder=""
                   id="total_cost"
                   name="total_cost"
                   disabled
@@ -130,7 +130,9 @@ function Inventory() {
                 <th>Item Name</th>
 
                 <th>Price</th>
+
                 <th>Qty</th>
+
                 <th>Amount</th>
               </tr>
             </thead>
@@ -151,13 +153,13 @@ function Inventory() {
 
         <div class="col-sm-4">
           <div class="form-group" align="left">
-            <h3>Total</h3>
+            <h3>Total Amount</h3>
 
             <input
               type="text"
               class="form-control"
-              placeholder="Enter Total"
-              style={{ color: "white" }}
+              placeholder="Total"
+              style={{ color: "black" }}
               required
               disabled
               value={total}
