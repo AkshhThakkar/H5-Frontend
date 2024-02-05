@@ -14,7 +14,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../redux/UserSlice";
+import { login } from "../../Redux/UsersSlice";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
