@@ -6,12 +6,14 @@ const MaybeShowSidebar = ({ children }) => {
   const location = useLocation();
   const [showSidebar, setShowSidebar] = useState(false);
   useEffect(() => {
-    if (location.pathname === "/" || location.pathname === "/register") {
+    if (
+      location.pathname === "/" ||
+      location.pathname === "/register" ||
+      location.pathname === "/forgotpassword"
+    ) {
       setShowSidebar(false);
-      console.log("setShowSidebar if");
     } else {
       setShowSidebar(true);
-      console.log("setShowSidebar else");
     }
   }, [location]);
   return <>{showSidebar && children}</>;
