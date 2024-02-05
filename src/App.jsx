@@ -15,7 +15,6 @@ import MaybeShowHeader from "./Components/MaybeShowHeader";
 // import Router from "./Router/Router";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Registration from "./Components/Login/Registration";
-import { ForgotPassword } from "./Components/Login/ForgotPassword";
 
 function App() {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
@@ -41,7 +40,6 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path="/register" element={<Registration />} />
-          <Route exact path="/forgotpassword" element={<ForgotPassword />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/customers" element={<Customers />} />
