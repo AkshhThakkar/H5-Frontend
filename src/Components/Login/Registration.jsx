@@ -19,11 +19,12 @@ import { Formik, Field, Form, ErrorMessage, useFormik } from "formik";
 import { FormHelperText } from "@material-ui/core";
 import * as Yup from "yup";
 import axios from "axios";
+import "./Registration.css";
 
 const Signup = () => {
   const paperStyle = { padding: 20, width: 300, margin: "0 auto" };
   const headerStyle = { margin: 0 };
-  const avatarStyle = { backgroundColor: "#1bbd7e" };
+  const avatarStyle = { backgroundColor: "#3498db", color: "#ffffff" };
   const marginTop = { marginTop: 5 };
   const initialValues = {
     username: "",

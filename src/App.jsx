@@ -6,7 +6,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import Categories from "./Components/Categories/Categories";
 import Customers from "./Components/Customers/Customers";
 import Sales from "./Components/Sales/Sales";
-import Products from "./Components/Products/Products";
+import Inventory from "./Components/Inventory/Inventory";
 import Reports from "./Components/Reports/Reports";
 import Settings from "./Components/Settings/Settings";
 import Login from "./Components/Login/index";
@@ -22,7 +22,7 @@ function App() {
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle);
   };
-  const [view, setView] = useState("basic");
+
   return (
     <div className="grid-container">
       <BrowserRouter>
@@ -44,7 +44,7 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/sales" element={<Sales />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/inventory" element={<Inventory />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>

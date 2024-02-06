@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: 1d2634; /* Background color for the page */
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.paper {
+  padding: 30px;
+  width: 400px;
+  margin: 0 auto;
+  background-color: #ffffff; /* Background color for the signup box */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.avatar {
+  background-color: #1bbd7e;
+  color: #ffffff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.button {
+  margin-top: 20px;
+}
+
+.link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.link a {
+  text-decoration: none;
+  color: #1976d2;
+  font-weight: bold;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}

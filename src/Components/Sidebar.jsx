@@ -24,6 +24,12 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       component: BsPeopleFill,
     },
     {
+      id: "inventory",
+      route: "/inventory",
+      title: "Inventory",
+      component: BsCart3,
+    },
+    {
       id: "sales",
       route: "/sales",
       title: "Sales",

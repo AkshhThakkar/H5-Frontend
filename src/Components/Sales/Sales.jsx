@@ -1,6 +1,7 @@
 import { useState } from "react";
+import "./sales.css";
 
-function Inventory() {
+function Sales() {
   const [price, setPrice] = useState(0);
   const [qty, setQty] = useState(0);
   const [total, setTotal] = useState(0);
@@ -54,118 +55,120 @@ function Inventory() {
   }
 
   return (
-    <div class="container-fluid bg-2 text-center">
+    <div className="container-fluid bg-2 text-center">
       <h1>Sales Management</h1>
       <br />
-      <div class="row">
-        <div class="col-sm-8">
-          <table class="table table-bordered">
-            <h3 align="left"> Add Products </h3>
-            <tr>
-              <th>Product Name</th>
-              <th>Price</th>
-              <th>Qty</th>
-              <th>Amount</th>
-              <th>Option</th>
-            </tr>
-            <tr>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Item Name"
-                  style={{ color: "black" }}
-                  value={name}
-                  onChange={(event) => {
-                    setName(event.target.value);
-                  }}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Price"
-                  style={{ color: "black" }}
-                  value={price}
-                  onChange={handlePriceChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  class="form-control"
-                  placeholder="Enter Qty"
-                  style={{ color: "black" }}
-                  value={qty}
-                  onChange={handleQuantityChange}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={sum}
-                  class="form-control"
-                  style={{ color: "black" }}
-                  placeholder=""
-                  id="total_cost"
-                  name="total_cost"
-                  disabled
-                />
-              </td>
-              <td>
-                <button
-                  class="btn btn-success"
-                  type="submit"
-                  onClick={Calculation}>
-                  Add
-                </button>
-              </td>
-            </tr>
+      <div className="row">
+        <div className="col-sm-8">
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Amount</th>
+                <th>Option</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Item Name"
+                    style={{ color: "black" }}
+                    value={name}
+                    onChange={(event) => {
+                      setName(event.target.value);
+                    }}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter Price"
+                    style={{ color: "black" }}
+                    value={price}
+                    onChange={handlePriceChange}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    className="form-control"
+                    placeholder="Enter Qty"
+                    style={{ color: "black" }}
+                    value={qty}
+                    onChange={handleQuantityChange}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    value={sum}
+                    className="form-control"
+                    style={{ color: "black", background: "white" }}
+                    placeholder=""
+                    id="total_cost"
+                    name="total_cost"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <button
+                    className="btn btn-success"
+                    type="submit"
+                    onClick={Calculation}>
+                    Add
+                  </button>
+                </td>
+              </tr>
+            </tbody>
           </table>
           <h3 align="left"> Products </h3>
-          <table class="table table-bordered">
+          <table className="table table-bordered">
             <thead>
               <tr>
                 <th>Item Name</th>
-
                 <th>Price</th>
-
                 <th>Qty</th>
-
                 <th>Amount</th>
               </tr>
             </thead>
-
             <tbody>
               {users.map((row, index) => (
                 <tr key={index}>
-                  <td>{row.name}</td>
-                  <td>{row.price}</td>
-
-                  <td>{row.qty}</td>
-                  <td>{row.sum}</td>
+                  <td style={{ color: "white" }}>{row.name}</td>
+                  <td style={{ color: "white" }}>{row.price}</td>
+                  <td style={{ color: "white" }}>{row.qty}</td>
+                  <td style={{ color: "white" }}>{row.sum}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <div class="col-sm-4">
-          <div class="form-group" align="left">
+        <div className="col-sm-4">
+          <div className="form-group" align="left">
             <h3>Total Amount</h3>
 
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Total"
-              style={{ color: "black" }}
+              style={{ color: "black", background: "white" }}
               required
               disabled
               value={total}
             />
             <br />
-            <button type="button" class="btn btn-success" onClick={refreshPage}>
+            <br />
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={refreshPage}>
               {" "}
               <span>Complete</span>{" "}
             </button>
@@ -176,4 +179,4 @@ function Inventory() {
   );
 }
 
-export default Inventory;
+export default Sales;

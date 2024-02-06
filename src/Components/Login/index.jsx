@@ -8,6 +8,7 @@ import {
   Typography,
   Link,
 } from "@material-ui/core";
+import "./index.css";
 import { Grid } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -29,13 +30,16 @@ const Login = () => {
     height: "60vh",
     width: 300,
     margin: "0 auto",
+    backgroundColor: "#f0f3f5",
+    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+    borderRadius: "8px",
   };
 
   const navigate = useNavigate();
 
-  const avatarStyle = { backgroundColor: "#1bbd7e" };
+  const avatarStyle = { backgroundColor: "#3498db", color: "#ffffff" };
 
-  const btnstyle = { margin: "8px 0" };
+  const btnstyle = { margin: "15px 0" };
 
   const dispatch = useDispatch();
 
@@ -72,7 +76,7 @@ const Login = () => {
     <Grid
       container
       alignItems="center"
-      style={{ height: "100vh", width: "100vw" }}>
+      style={{ height: "100vh", width: "100vw", backgroundColor: "#1d2634" }}>
       <Paper style={paperStyle}>
         <Grid container direction="column" alignItems="center" spacing={2}>
           <Avatar style={avatarStyle}>
@@ -82,7 +86,7 @@ const Login = () => {
         </Grid>
         <Formik
           initialValues={initialValues}
-          onSubmit={onSubmit}
+          onSubmit={handleLogin}
           validationSchema={validationSchema}>
           {(props) => (
             <Form>
