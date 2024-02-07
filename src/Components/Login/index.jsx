@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
 import {
   Paper,
@@ -11,6 +11,12 @@ import {
 import "./index.css";
 import { Grid } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import {
+  RemoveRedEyeRounded,
+  RemoveRedEyeOutlined,
+  Person,
+  Lock,
+} from "@material-ui/icons";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import axios from "axios";
@@ -42,6 +48,8 @@ const Login = () => {
   const btnstyle = { margin: "15px 0" };
 
   const dispatch = useDispatch();
+
+  const [visible, setVisible] = useState(false);
 
   function handleLogin(payload) {
     axios
@@ -89,30 +97,51 @@ const Login = () => {
           onSubmit={handleLogin}
           validationSchema={validationSchema}>
           {(props) => (
-            <Form>
-              <Field
-                as={TextField}
-                label="Username"
-                name="username"
-                id="username"
-                autoComplete="on"
-                placeholder="Enter username"
-                fullWidth
-                required
-                helperText={<ErrorMessage name="username" />}
-              />
-              <Field
-                as={TextField}
-                label="Password"
-                name="password"
-                id="password"
-                autoComplete="on"
-                placeholder="Enter password"
-                type="password"
-                fullWidth
-                required
-                helperText={<ErrorMessage name="password" />}
-              />
+            <Form onClick={onsubmit}>
+              <div style={{ marginBottom: "20px" }}>
+                <Field
+                  as={TextField}
+                  label="Username"
+                  name="username"
+                  id="username"
+                  autoComplete="on"
+                  placeholder="Enter username"
+                  fullWidth
+                  required
+                  helperText={<ErrorMessage name="username" />}
+                  InputProps={{
+                    startAdornment: <Person style={{ marginRight: "10px" }} />,
+                  }}
+                />
+              </div>
+              <div style={{ marginBottom: "20px" }}>
+                <Field
+                  as={TextField}
+                  label="Password"
+                  name="password"
+                  id="password"
+                  autoComplete="on"
+                  placeholder="Enter password"
+                  type={visible ? "text" : "password"}
+                  fullWidth
+                  required
+                  helperText={<ErrorMessage name="password" />}
+                  InputProps={{
+                    startAdornment: <Lock style={{ marginRight: "10px" }} />,
+                    endAdornment: (
+                      <div
+                        onClick={() => setVisible(!visible)}
+                        style={{ cursor: "pointer" }}>
+                        {visible ? (
+                          <RemoveRedEyeRounded />
+                        ) : (
+                          <RemoveRedEyeOutlined />
+                        )}
+                      </div>
+                    ),
+                  }}
+                />
+              </div>
               <Field
                 as={FormControlLabel}
                 name="remember"
@@ -120,7 +149,6 @@ const Login = () => {
                 label="Remember me"
               />
               <Button
-                // onClick={handleClick}
                 type="submit"
                 color="primary"
                 variant="contained"
