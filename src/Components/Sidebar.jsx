@@ -7,6 +7,34 @@ import {
   BsListCheck,
   BsMenuButtonWideFill,
   BsFillGearFill,
+  BsAlexa,
+  BsAlipay,
+  BsPersonExclamation,
+  BsPersonFillLock,
+  BsDatabaseFillGear,
+  BsCake2Fill,
+  BsActivity,
+  BsSave,
+  BsQuora,
+  BsWhatsapp,
+  BsPower,
+  BsTwitterX,
+  BsBootstrapFill,
+  BsEmojiKiss,
+  BsEmojiGrin,
+  BsFillEmojiSunglassesFill,
+  BsPersonBadge,
+  BsPersonPlus,
+  BsFillFileEarmarkPersonFill,
+  BsValentine,
+  BsVirus,
+  BsHr,
+  BsAppIndicator,
+  BsFileZip,
+  BsMenuApp,
+  BsApple,
+  BsSteam,
+  BsPersonCircle,
 } from "react-icons/bs";
 
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
@@ -42,10 +70,10 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       component: BsMenuButtonWideFill,
     },
     {
-      id: "settings",
-      route: "/settings",
-      title: "Settings",
-      component: BsFillGearFill,
+      id: "profile",
+      route: "/profile",
+      title: "Profile",
+      component: BsPersonCircle,
     },
   ];
   const WrapperComp = ({ Component }) => <Component className="icon" />;
@@ -55,7 +83,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       className={openSidebarToggle ? "sidebar-responsive" : ""}>
       <div className="sidebar-title">
         <div className="sidebar-brand">
-          <BsCart3 className="icon_header" /> Admin Panel
+          <BsSteam className="icon_header" size={40} /> Admin Panel
         </div>
         <span className="icon close_icon" onClick={OpenSidebar}>
           X

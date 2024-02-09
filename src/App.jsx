@@ -8,10 +8,12 @@ import Customers from "./Components/Customers/Customers";
 import Sales from "./Components/Sales/Sales";
 import Inventory from "./Components/Inventory/Inventory";
 import Reports from "./Components/Reports/Reports";
-import Settings from "./Components/Settings/Settings";
+import Profile from "./Components/Profile/Profile";
+import Notifications from "./Components/Notifications/Notifications";
 import Login from "./Components/Login/index";
 import MaybeShowSidebar from "./Components/MaybeShowSidebar";
 import MaybeShowHeader from "./Components/MaybeShowHeader";
+import { Toggle } from "./Components/Theme/Toggle";
 // import Router from "./Router/Router";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Registration from "./Components/Login/Registration";
@@ -46,7 +48,8 @@ function App() {
           <Route path="/sales" element={<Sales />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/reports" element={<Reports />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/notifications" element={<Notifications />} />
         </Routes>
         {/* <Router /> */}
       </BrowserRouter>
