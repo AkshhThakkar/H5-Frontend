@@ -73,8 +73,14 @@ const Signup = () => {
   function handleRegister(payload) {
     axios
       .post("http://192.168.3.237:5760/api/user/register", payload)
-      .then((res) => console.log(res));
-    navigate("/").catch((error) => console.log(error.response.data));
+      .then((res) => {
+        console.log(res);
+
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
   }
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -105,8 +111,15 @@ const Signup = () => {
             <AddCircleOutlineOutlinedIcon />
           </Avatar>
           <h2 style={headerStyle}>Sign Up</h2>
-          <Typography variant="caption" gutterBottom>
-            Please fill this form to create an account !
+          <Typography
+            variant="caption"
+            gutterBottom
+            style={{
+              fontFamily: "Pacifico, cursive",
+              fontSize: "14px",
+              fontWeight: "bold",
+            }}>
+            Sign Up and Get Started!
           </Typography>
         </Grid>
         <Formik
