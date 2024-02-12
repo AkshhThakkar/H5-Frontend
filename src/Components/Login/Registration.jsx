@@ -49,6 +49,8 @@ const Signup = () => {
 
   const [visible, setVisible] = useState(false);
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const validationSchema = Yup.object().shape({
     username: Yup.string().min(3, "It's too short").required("Required"),
     email: Yup.string().email("Enter valid email").required("Required"),
@@ -75,16 +77,19 @@ const Signup = () => {
       .post("http://192.168.3.237:5760/api/user/register", payload)
       .then((res) => {
         console.log(res);
-
         navigate("/");
       })
       .catch((error) => {
         console.log(error.response.data);
+        if (error.response && error.response.data.code === 11000) {
+          setErrorMessage("An error occurred. Please try again later.");
+        } else {
+          setErrorMessage("Username or email or number already exists");
+        }
       });
   }
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({ initialValues });
+  const { errors } = useFormik({ initialValues });
 
   const onSubmit = (values, action) => {
     handleRegister(values, action);
@@ -267,6 +272,11 @@ const Signup = () => {
                   <ErrorMessage name="termsAndConditions" />
                 </FormHelperText>
               </div>
+              {errorMessage && (
+                <div style={{ color: "red", marginBottom: 10 }}>
+                  {errorMessage}
+                </div>
+              )}
               <Button
                 type="submit"
                 variant="contained"
