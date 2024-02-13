@@ -252,8 +252,6 @@ const Login = () => {
         console.log(res);
         dispatch(login(res.data.result));
         navigate("/dashboard");
-        props.resetForm();
-        props.setSubmitting(false);
       })
       .catch((error) => {
         console.error("Error occurred during login:", error);
@@ -275,7 +273,6 @@ const Login = () => {
             "An unexpected error occurred while logging in. Please try again later."
           );
         }
-        props.setSubmitting(false);
       });
   }
 
@@ -286,10 +283,7 @@ const Login = () => {
     console.log(values);
     handleLogin(values);
     console.log("🚀 ~ Login ~ values:", values);
-    setTimeout(() => {
-      props.resetForm();
-      props.setSubmitting(false);
-    }, 2000);
+    setTimeout(() => {}, 2000);
   };
   const validationSchema = Yup.object().shape({
     username: Yup.string().required("Required"),

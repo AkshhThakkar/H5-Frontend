@@ -19,6 +19,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Registration from "./Components/Login/Registration";
 
 function App() {
+  const user = {
+    username: "john_doe",
+    email: "john@example.com",
+    gender: "male",
+    mobile: "1234567890",
+  };
+
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
 
   const OpenSidebar = () => {
@@ -48,7 +55,7 @@ function App() {
           <Route path="/sales" element={<Sales />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/reports" element={<Reports />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile user={user} />} />
           <Route path="/notifications" element={<Notifications />} />
         </Routes>
         {/* <Router /> */}

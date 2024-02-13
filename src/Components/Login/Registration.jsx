@@ -49,61 +49,56 @@ const Signup = () => {
 
   const [visible, setVisible] = useState(false);
 
+  const [confirmvisible, setConfirmvisible] = useState(false);
+
   const [errorMessage, setErrorMessage] = useState("");
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().min(3, "It's too short").required("Required"),
-    email: Yup.string().email("Enter valid email").required("Required"),
+    username: Yup.string()
+      .min(3, "Username is too short")
+      .required("Username is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
     gender: Yup.string()
-      .oneOf(["male", "female"], "Required")
-      .required("Required"),
-    mobile: Yup.number()
-      .typeError("Enter valid Phone Number")
-      .required("Required"),
+      .oneOf(["male", "female"], "Gender is required")
+      .required("Gender is required"),
+    mobile: Yup.string()
+      .matches(/^[0-9]+$/, "Invalid phone number")
+      .required("Phone number is required"),
     password: Yup.string()
-      .min(8, "Password minimum length should be 8")
-      .required("Required"),
+      .min(8, "Password should be at least 8 characters")
+      .required("Password is required"),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password")], "Password not matched")
-      .required("Required"),
-    termsAndConditions: Yup.string().oneOf(
-      ["true"],
-      "Accept terms & conditions"
-    ),
+      .oneOf([Yup.ref("password")], "Passwords do not match")
+      .required("Confirm password is required"),
+    termsAndConditions: Yup.boolean()
+      .oneOf([true], "Terms & conditions must be accepted")
+      .required("Terms & conditions must be accepted"),
   });
 
-  function handleRegister(payload) {
-    axios
-      .post("http://192.168.3.237:5760/api/user/register", payload)
-      .then((res) => {
-        console.log(res);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-        if (error.response && error.response.data.code === 11000) {
-          setErrorMessage("An error occurred. Please try again later.");
-        } else {
-          setErrorMessage("Username or email or number already exists");
-        }
-      });
-  }
-
-  const { errors } = useFormik({ initialValues });
+  const handleRegister = async (payload) => {
+    try {
+      const response = await axios.post(
+        "http://192.168.3.237:5760/api/user/register",
+        payload
+      );
+      console.log(response);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      if (error.response && error.response.data.code === 11000) {
+        setErrorMessage("An error occurred. Please try again later.");
+      } else {
+        setErrorMessage("Username or email or number already exists");
+      }
+    }
+  };
+  // const { errors } = useFormik({ initialValues });
 
   const onSubmit = (values, action) => {
     handleRegister(values, action);
-    console.log(
-      "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
-      values
-    );
+    console.log("Form submitted:", values);
     action.resetForm();
   };
-
-  console.log(
-    "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
-    errors
-  );
 
   return (
     <Grid
@@ -115,7 +110,9 @@ const Signup = () => {
           <Avatar style={avatarStyle}>
             <AddCircleOutlineOutlinedIcon />
           </Avatar>
-          <h2 style={headerStyle}>Sign Up</h2>
+          <Typography variant="h5" style={headerStyle}>
+            Sign Up
+          </Typography>
           <Typography
             variant="caption"
             gutterBottom
@@ -138,11 +135,11 @@ const Signup = () => {
                   as={TextField}
                   label="Username"
                   name="username"
-                  id="username"
                   autoComplete="on"
                   placeholder="Enter username"
                   fullWidth
                   required
+                  error={props.touched.username && !!props.errors.username}
                   helperText={<ErrorMessage name="username" />}
                   InputProps={{
                     startAdornment: <Person style={{ marginRight: "10px" }} />,
@@ -154,10 +151,10 @@ const Signup = () => {
                   as={TextField}
                   fullWidth
                   name="email"
-                  id="email"
                   autoComplete="on"
                   label="Email"
                   placeholder="Enter your email"
+                  error={props.touched.email && !!props.errors.email}
                   helperText={<ErrorMessage name="email" />}
                   InputProps={{
                     startAdornment: (
@@ -167,26 +164,23 @@ const Signup = () => {
                 />
               </div>
               <div style={marginTop}>
-                <TbGenderBigender />
-                <FormControl component="fieldset">
-                  <FormLabel component="legend">Gender</FormLabel>
-                  <Field
-                    as={RadioGroup}
-                    aria-label="gender"
-                    name="gender"
-                    style={{ display: "initial" }}>
-                    <FormControlLabel
-                      value="male"
-                      control={<Radio />}
-                      label="Male"
-                    />
-                    <FormControlLabel
-                      value="female"
-                      control={<Radio />}
-                      label="Female"
-                    />
-                  </Field>
-                </FormControl>
+                <FormLabel component="legend">Gender</FormLabel>
+                <Field
+                  as={RadioGroup}
+                  aria-label="gender"
+                  name="gender"
+                  style={{ display: "initial" }}>
+                  <FormControlLabel
+                    value="male"
+                    control={<Radio />}
+                    label="Male"
+                  />
+                  <FormControlLabel
+                    value="female"
+                    control={<Radio />}
+                    label="Female"
+                  />
+                </Field>
                 <FormHelperText>
                   <ErrorMessage name="gender" />
                 </FormHelperText>
@@ -197,9 +191,9 @@ const Signup = () => {
                   fullWidth
                   name="mobile"
                   label="Phone Number"
-                  id="mobile"
                   autoComplete="on"
                   placeholder="Enter your phone number"
+                  error={props.touched.mobile && !!props.errors.mobile}
                   helperText={<ErrorMessage name="mobile" />}
                   InputProps={{
                     startAdornment: (
@@ -213,12 +207,12 @@ const Signup = () => {
                   as={TextField}
                   label="Password"
                   name="password"
-                  id="password"
                   autoComplete="on"
                   placeholder="Enter password"
                   type={visible ? "text" : "password"}
                   fullWidth
                   required
+                  error={props.touched.password && !!props.errors.password}
                   helperText={<ErrorMessage name="password" />}
                   InputProps={{
                     startAdornment: <Lock style={{ marginRight: "10px" }} />,
@@ -241,19 +235,22 @@ const Signup = () => {
                   as={TextField}
                   fullWidth
                   name="confirmPassword"
-                  id="confirmPassword"
-                  type="password"
                   autoComplete="on"
                   label="Confirm Password"
                   placeholder="Confirm your password"
+                  type={confirmvisible ? "text" : "password"}
+                  error={
+                    props.touched.confirmPassword &&
+                    !!props.errors.confirmPassword
+                  }
                   helperText={<ErrorMessage name="confirmPassword" />}
                   InputProps={{
                     startAdornment: <Lock style={{ marginRight: "10px" }} />,
                     endAdornment: (
                       <div
-                        onClick={() => setVisible(!visible)}
+                        onClick={() => setConfirmvisible(!confirmvisible)}
                         style={{ cursor: "pointer" }}>
-                        {visible ? (
+                        {confirmvisible ? (
                           <RemoveRedEyeRounded />
                         ) : (
                           <RemoveRedEyeOutlined />
@@ -273,9 +270,9 @@ const Signup = () => {
                 </FormHelperText>
               </div>
               {errorMessage && (
-                <div style={{ color: "red", marginBottom: 10 }}>
+                <Typography variant="body2" color="error">
                   {errorMessage}
-                </div>
+                </Typography>
               )}
               <Button
                 type="submit"
