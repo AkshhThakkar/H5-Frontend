@@ -75,24 +75,24 @@ const Signup = () => {
       .required("Terms & conditions must be accepted"),
   });
 
-  const handleRegister = async (payload) => {
-    try {
-      const response = await axios.post(
-        "http://192.168.3.237:5760/api/user/register",
-        payload
-      );
-      console.log(response);
-      navigate("/");
-    } catch (error) {
-      console.error(error);
-      if (error.response && error.response.data.code === 11000) {
-        setErrorMessage("An error occurred. Please try again later.");
-      } else {
-        setErrorMessage("Username or email or number already exists");
-      }
-    }
-  };
-  // const { errors } = useFormik({ initialValues });
+  function handleRegister(payload) {
+    axios
+      .post("http://192.168.3.237:5760/api/user/register", payload)
+      .then((res) => {
+        console.log(res);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        if (error.response && error.response.data.code === 11000) {
+          setErrorMessage("Username or email or number already exists");
+        } else {
+          setErrorMessage("An error occurred. Please try again later.");
+        }
+      });
+  }
+
+  const { errors } = useFormik({ initialValues });
 
   const onSubmit = (values, action) => {
     handleRegister(values, action);
