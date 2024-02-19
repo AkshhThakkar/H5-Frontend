@@ -9,7 +9,8 @@ const MaybeShowSidebar = ({ children }) => {
     if (
       location.pathname === "/" ||
       location.pathname === "/register" ||
-      location.pathname === "/forgotpassword"
+      location.pathname === "/forgotpassword" ||
+      location.pathname === "/reset"
     ) {
       setShowSidebar(false);
     } else {

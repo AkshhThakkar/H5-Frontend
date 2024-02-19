@@ -11,11 +11,12 @@ import Reports from "./Components/Reports/Reports";
 import Profile from "./Components/Profile/Profile";
 import Notifications from "./Components/Notifications/Notifications";
 import Login from "./Components/Login/index";
-import Forgot from "./Components/Login/Forgot/ForgotPassword";
+import ForgotPassword from "./Components/Login/Forgot/ForgotPassword";
 import MaybeShowSidebar from "./Components/MaybeShowSidebar";
 import MaybeShowHeader from "./Components/MaybeShowHeader";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Registration from "./Components/Login/Registration";
+import ResetPassword from "./Components/Login/Forgot/ResetPassword";
 
 function App() {
   const user = {
@@ -47,7 +48,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path="/register" element={<Registration />} />
-          <Route exact path="/forgotpassword" element={<Forgot />} />
+          <Route exact path="/forgotpassword" element={<ForgotPassword />} />
+          <Route exact path="/reset" element={<ResetPassword />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/customers" element={<Customers />} />

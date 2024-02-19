@@ -1,5 +1,5 @@
-import { React, useState, useContext } from "react";
-import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
+import React, { useState } from "react";
+import { Field, Formik } from "formik";
 import {
   Paper,
   Avatar,
@@ -7,67 +7,49 @@ import {
   Button,
   Typography,
   Link,
+  CircularProgress,
 } from "@material-ui/core";
 import { EmailRounded } from "@material-ui/icons";
 import { Grid } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import * as Yup from "yup";
 
-const initialValues = {
-  email: "",
-};
-
-const Forgot = () => {
+const ForgotPassword = () => {
   const paperStyle = {
     padding: 20,
-    height: "50vh",
+    height: "60vh",
     width: 300,
     margin: "0 auto",
     backgroundColor: "#f0f3f5",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
     borderRadius: "8px",
   };
-
+  const avatarStyle = { backgroundColor: "#3498db", color: "#ffffff" };
+  const btnstyle = { margin: "15px 0" };
+  const marginTop = { marginTop: 60 };
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const avatarStyle = { backgroundColor: "#3498db", color: "#ffffff" };
-
-  const btnstyle = { margin: "15px 0" };
-
-  const [errorMessage, setErrorMessage] = useState("");
-
-  function handleForgot() {
-    if (email) {
-      const OTP = Math.floor(Math.random() * 9000 + 1000);
-      console.log(OTP);
-      setOTP(OTP);
-
-      axios
-        .post("http://192.168.3.237:5760/api/pass/forgot-password", {
-          OTP,
-          recipient_email: email,
-        })
-        .then(() => navigate("/otp"))
-        .catch(console.log);
-      console.log();
-      return;
+  const handleForgotPassword = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        "http://192.168.3.237:5760/api/pass/forgot-password",
+        { email }
+      );
+      setMessage(response.data.message);
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/reset");
+      }, 3000); // 3 seconds delay
+    } catch (error) {
+      setLoading(false);
+      setMessage(error.response.data.message);
     }
-  }
-
-  const onSubmit = (values, props) => {
-    console.log(values);
   };
-  const marginTop = { marginTop: 9 };
-
-  const { handleChange } = useFormik({
-    initialValues: initialValues,
-  });
-
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().email("Invalid email").required("Email is required"),
-  });
 
   return (
     <Grid
@@ -79,62 +61,48 @@ const Forgot = () => {
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />
           </Avatar>
-          <h2>Reset Password</h2>
+          <h2>Forgot password</h2>
         </Grid>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={handleForgot}
-          validationSchema={validationSchema}>
-          {(props) => (
-            <Form onClick={onsubmit}>
-              <div style={{ marginBottom: "20px" }}>
-                <div className="flex flex-row text-sm font-medium text-gray-400">
-                  <p>We will send you a recovery code to your email</p>
-                </div>
-                <div style={marginTop}>
-                  <Field
-                    as={TextField}
-                    fullWidth
-                    name="email"
-                    // onChange={(e) => setEmail(e.target.value)}
-                    autoComplete="on"
-                    label="Email"
-                    placeholder="Enter your email"
-                    error={props.touched.email && !!props.errors.email}
-                    helperText={<ErrorMessage name="email" />}
-                    InputProps={{
-                      startAdornment: (
-                        <EmailRounded style={{ marginRight: "10px" }} />
-                      ),
-                    }}
-                  />
-                </div>
-              </div>
-              <Button
-                type="submit"
-                color="primary"
-                variant="contained"
-                disabled={props.isSubmitting}
-                style={btnstyle}
-                fullWidth>
-                {props.isSubmitting ? "Loading" : "Send"}
-              </Button>
-              {errorMessage && (
-                <Typography style={{ color: "red", marginTop: "10px" }}>
-                  {errorMessage}
-                </Typography>
-              )}
-            </Form>
-          )}
+        <p>We will send you a recovery code to your email</p>
+        <Formik>
+          <Field
+            as={TextField}
+            fullWidth
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+            autoComplete="on"
+            label="Email"
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            InputProps={{
+              startAdornment: <EmailRounded style={{ marginRight: "10px" }} />,
+            }}
+          />
         </Formik>
-        <Typography>
-          <Link href="/" onClick={() => handleChange("event", 1)}>
-            Back
-          </Link>
-        </Typography>
+        <Button
+          type="submit"
+          color="primary"
+          variant="contained"
+          style={btnstyle}
+          fullWidth
+          onClick={handleForgotPassword}
+          disabled={loading}>
+          {loading ? (
+            <CircularProgress size={24} color="white" />
+          ) : (
+            "Reset Password"
+          )}
+        </Button>
+        {message && <Typography>{message}</Typography>}
+        <div style={marginTop}>
+          <Typography>
+            <Link href="/">Back </Link>
+          </Typography>
+        </div>
       </Paper>
     </Grid>
   );
 };
 
-export default Forgot;
+export default ForgotPassword;

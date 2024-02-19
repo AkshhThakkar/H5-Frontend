@@ -9,7 +9,8 @@ const MaybeShowHeader = ({ children }) => {
     if (
       location.pathname === "/" ||
       location.pathname === "/register" ||
-      location.pathname === "/forgotpassword"
+      location.pathname === "/forgotpassword" ||
+      location.pathname === "/reset"
     ) {
       setShowHeader(false);
     } else {
