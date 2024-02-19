@@ -11,10 +11,9 @@ import Reports from "./Components/Reports/Reports";
 import Profile from "./Components/Profile/Profile";
 import Notifications from "./Components/Notifications/Notifications";
 import Login from "./Components/Login/index";
+import Forgot from "./Components/Login/Forgot/ForgotPassword";
 import MaybeShowSidebar from "./Components/MaybeShowSidebar";
 import MaybeShowHeader from "./Components/MaybeShowHeader";
-import { Toggle } from "./Components/Theme/Toggle";
-// import Router from "./Router/Router";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Registration from "./Components/Login/Registration";
 
@@ -27,7 +26,6 @@ function App() {
   };
 
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
-
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle);
   };
@@ -49,6 +47,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path="/register" element={<Registration />} />
+          <Route exact path="/forgotpassword" element={<Forgot />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/customers" element={<Customers />} />
@@ -58,7 +57,6 @@ function App() {
           <Route path="/profile" element={<Profile user={user} />} />
           <Route path="/notifications" element={<Notifications />} />
         </Routes>
-        {/* <Router /> */}
       </BrowserRouter>
     </div>
   );

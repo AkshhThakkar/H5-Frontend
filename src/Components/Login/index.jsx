@@ -319,6 +319,7 @@ const Login = () => {
                   placeholder="Enter username"
                   fullWidth
                   required
+                  error={props.touched.username && !!props.errors.username}
                   helperText={<ErrorMessage name="username" />}
                   InputProps={{
                     startAdornment: <Person style={{ marginRight: "10px" }} />,
@@ -336,6 +337,7 @@ const Login = () => {
                   type={visible ? "text" : "password"}
                   fullWidth
                   required
+                  error={props.touched.password && !!props.errors.password}
                   helperText={<ErrorMessage name="password" />}
                   InputProps={{
                     startAdornment: <Lock style={{ marginRight: "10px" }} />,
@@ -377,7 +379,7 @@ const Login = () => {
           )}
         </Formik>
         <Typography>
-          <Link href="/forgotpassword">Forgot password ?</Link>
+          <Link href="/forgotpassword">Forgot password ? </Link>
         </Typography>
         <Typography>
           Do you have an account ?
