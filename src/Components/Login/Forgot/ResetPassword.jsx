@@ -1,140 +1,173 @@
-// import React, { useState } from "react";
-// import axios from "axios";
-
-// const ResetPassword = () => {
-//   const [email, setEmail] = useState("");
-//   const [token, setToken] = useState("");
-//   const [newPassword, setNewPassword] = useState("");
-//   const [message, setMessage] = useState("");
-
-//   const handleResetPassword = async () => {
-//     try {
-//       const response = await axios.post("http://192.168.3.237:5760/api/user/", {
-//         email,
-//         token,
-//         newPassword,
-//       });
-//       setMessage(response.data.message);
-//     } catch (error) {
-//       setMessage(error.response.data.message);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>Reset Password</h2>
-//       <input
-//         type="email"
-//         placeholder="Enter your email"
-//         value={email}
-//         onChange={(e) => setEmail(e.target.value)}
-//       />
-//       <input
-//         type="text"
-//         placeholder="Enter reset token"
-//         value={token}
-//         onChange={(e) => setToken(e.target.value)}
-//       />
-//       <input
-//         type="password"
-//         placeholder="Enter new password"
-//         value={newPassword}
-//         onChange={(e) => setNewPassword(e.target.value)}
-//       />
-//       <button onClick={handleResetPassword}>Reset Password</button>
-//       {message && <p>{message}</p>}
-//     </div>
-//   );
-// };
-
-// export default ResetPassword;
 import React, { useState } from "react";
-import { TextField, Button, Typography, Paper, Grid } from "@material-ui/core";
+import {
+  Grid,
+  Paper,
+  Avatar,
+  Typography,
+  TextField,
+  Button,
+} from "@material-ui/core";
 import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
-import axios from "axios";
+import { RemoveRedEyeRounded, RemoveRedEyeOutlined } from "@material-ui/icons";
 import { useNavigate } from "react-router-dom";
+import { Formik, Field, Form, ErrorMessage, useFormik } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
 
 const ResetPassword = () => {
   const paperStyle = {
+    height: 330,
     padding: 20,
-    height: 300,
     width: 300,
     margin: "0 auto",
-    backgroundColor: "#f0f3f5",
-    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-    borderRadius: "8px",
+    textAlign: "center",
   };
-  const avatarStyle = { backgroundColor: "#3498db", color: "#ffffff" };
-  const btnstyle = { marginTop: 20 }; // Adjusted margin for the button
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const avatarStyle = {
+    backgroundColor: "#3498db",
+    color: "#ffffff",
+    margin: "0 auto",
+  };
+  const marginTop = { marginTop: 20 };
+  const initialValues = {
+    password: "",
+    confirmPassword: "",
+  };
+
   const navigate = useNavigate();
 
-  const handleResetPassword = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.post(
-        "http://192.168.3.237:5760/api/pass/reset-password",
-        { password, confirmPassword }
-      );
-      setMessage(response.data.message);
-      setTimeout(() => {
-        setLoading(false);
+  const [visible, setVisible] = useState(false);
+  const [confirmVisible, setConfirmVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const validationSchema = Yup.object().shape({
+    password: Yup.string()
+      .min(8, "Password should be at least 8 characters")
+      .required("Password is required"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password")], "Passwords do not match")
+      .required("Confirm password is required"),
+  });
+
+  function handleResetPassword(payload) {
+    axios
+      .post("http://192.168.3.237:5760/api/pass/reset-password", payload)
+      .then((res) => {
+        console.log(res);
         navigate("/login");
-      }, 5000); // 5 seconds delay
-    } catch (error) {
-      setLoading(false);
-      setMessage(error.response.data.message);
-    }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        setErrorMessage("An error occurred. Please try again later.");
+      });
+  }
+
+  const { errors } = useFormik({ initialValues });
+
+  const onSubmit = (values, action) => {
+    handleResetPassword(values, action);
+    console.log("Form submitted:", values);
+    action.resetForm();
   };
 
   return (
     <Grid
       container
       alignItems="center"
-      style={{ height: "100vh", width: "100vw", backgroundColor: "#1d2634" }}>
+      justify="center"
+      style={{ height: "100vh", width: "100vw" }}>
       <Paper style={paperStyle}>
-        <Grid container direction="column" alignItems="center" spacing={2}>
-          <LockOutlinedIcon style={{ fontSize: 40 }} />
-          <Typography variant="h5">Reset password</Typography>
-          <TextField
-            fullWidth
-            name="password"
-            type="password"
-            label="Password"
-            placeholder="Enter your new password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ margin: "10px 0" }}
-          />
-          <TextField
-            fullWidth
-            name="confirmPassword"
-            type="password"
-            label="Confirm Password"
-            placeholder="Confirm your new password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            style={{ margin: "10px 0" }}
-          />
-        </Grid>
-        <Button
-          type="submit"
-          color="primary"
-          variant="contained"
-          style={btnstyle}
-          fullWidth
-          onClick={handleResetPassword}
-          disabled={loading}>
-          {loading ? "Loading..." : "Reset Password"}
-        </Button>
-        {message && (
-          <Typography style={{ color: "green", marginTop: 10 }}>
-            {message}
-          </Typography>
-        )}
+        <Avatar style={avatarStyle}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography variant="h5" style={{ margin: "10px 0" }}>
+          Reset Password
+        </Typography>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}>
+          {(props) => (
+            <Form>
+              <div style={marginTop}>
+                <Field
+                  as={TextField}
+                  label="Password"
+                  name="password"
+                  type={visible ? "text" : "password"}
+                  autoComplete="new-password"
+                  placeholder="Enter your new password"
+                  fullWidth
+                  required
+                  error={props.touched.password && !!props.errors.password}
+                  helperText={<ErrorMessage name="password" />}
+                  InputProps={{
+                    startAdornment: (
+                      <LockOutlinedIcon style={{ marginRight: "10px" }} />
+                    ),
+                    endAdornment: (
+                      <div
+                        onClick={() => setVisible(!visible)}
+                        style={{ cursor: "pointer" }}>
+                        {visible ? (
+                          <RemoveRedEyeRounded />
+                        ) : (
+                          <RemoveRedEyeOutlined />
+                        )}
+                      </div>
+                    ),
+                  }}
+                />
+              </div>
+              <div style={marginTop}>
+                <Field
+                  as={TextField}
+                  label="Confirm Password"
+                  name="confirmPassword"
+                  type={confirmVisible ? "text" : "password"}
+                  autoComplete="new-password"
+                  placeholder="Confirm your new password"
+                  fullWidth
+                  required
+                  error={
+                    props.touched.confirmPassword &&
+                    !!props.errors.confirmPassword
+                  }
+                  helperText={<ErrorMessage name="confirmPassword" />}
+                  InputProps={{
+                    startAdornment: (
+                      <LockOutlinedIcon style={{ marginRight: "10px" }} />
+                    ),
+                    endAdornment: (
+                      <div
+                        onClick={() => setConfirmVisible(!confirmVisible)}
+                        style={{ cursor: "pointer" }}>
+                        {confirmVisible ? (
+                          <RemoveRedEyeRounded />
+                        ) : (
+                          <RemoveRedEyeOutlined />
+                        )}
+                      </div>
+                    ),
+                  }}
+                />
+              </div>
+              {errorMessage && (
+                <Typography variant="body2" color="error">
+                  {errorMessage}
+                </Typography>
+              )}
+              <Button
+                type="submit"
+                variant="contained"
+                disabled={props.isSubmitting}
+                color="primary"
+                fullWidth
+                style={marginTop}>
+                {props.isSubmitting ? "Loading" : "Reset Password"}
+              </Button>
+            </Form>
+          )}
+        </Formik>
       </Paper>
     </Grid>
   );

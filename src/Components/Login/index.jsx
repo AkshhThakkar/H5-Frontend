@@ -19,6 +19,7 @@ import {
 } from "@material-ui/icons";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../Redux/UsersSlice";
@@ -53,7 +54,7 @@ const Login = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  function handleLogin(payload) {
+  function handleLogin(payload, props) {
     axios
       .post("http://192.168.3.237:5760/api/user/login", payload)
       .then((res) => {
@@ -70,16 +71,21 @@ const Login = () => {
           setErrorMessage(
             "Invalid username or password. Please refresh the page and try again."
           );
-          props.setFieldValue("username", "");
-          props.setFieldValue("password", "");
+          props.resetForm(); // Resetting form values
         } else if (error && error.code === "ECONNREFUSED") {
           setErrorMessage(
             "Failed to connect to the server. Please check your internet connection or try again later."
           );
+          setTimeout(() => {
+            window.location.reload();
+          }, 4000); // Refresh page after 4 seconds
         } else {
           setErrorMessage(
             "An unexpected error occurred while logging in. Please try again later."
           );
+          setTimeout(() => {
+            window.location.reload();
+          }, 4000); // Refresh page after 4 seconds
         }
       });
   }
@@ -89,7 +95,7 @@ const Login = () => {
   });
   const onSubmit = (values, props) => {
     console.log(values);
-    handleLogin(values);
+    handleLogin(values, props);
     console.log("🚀 ~ Login ~ values:", values);
     setTimeout(() => {}, 2000);
   };
@@ -176,7 +182,11 @@ const Login = () => {
                 disabled={props.isSubmitting}
                 style={btnstyle}
                 fullWidth>
-                {props.isSubmitting ? "Loading" : "Sign in"}
+                {props.isSubmitting ? (
+                  <CircularProgress size={24} color="inherit" />
+                ) : (
+                  "Sign in"
+                )}
               </Button>
               {errorMessage && (
                 <Typography style={{ color: "red", marginTop: "10px" }}>

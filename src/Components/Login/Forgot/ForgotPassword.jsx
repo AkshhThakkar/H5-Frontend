@@ -9,6 +9,7 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import { EmailRounded } from "@material-ui/icons";
+import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -24,12 +25,14 @@ const ForgotPassword = () => {
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
     borderRadius: "8px",
   };
-  const avatarStyle = { backgroundColor: "#3498db", color: "#ffffff" };
-  const btnContainerStyle = { textAlign: "center", marginTop: 20 }; // Added marginTop
+  const avatarStyle = {
+    backgroundColor: "#3498db",
+    color: "#ffffff",
+    marginBottom: "15px",
+  };
   const marginTop = { marginTop: 15 };
 
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const initialValues = {
     email: "",
@@ -40,7 +43,6 @@ const ForgotPassword = () => {
   });
 
   const handleForgotPassword = async (values, { setSubmitting }) => {
-    setLoading(true);
     try {
       const response = await axios.post(
         "http://192.168.3.237:5760/api/pass/forgot-password",
@@ -51,7 +53,6 @@ const ForgotPassword = () => {
       console.error("Error:", error);
       setMessage("An error occurred. Please try again later.");
     }
-    setLoading(false);
     setSubmitting(false);
   };
 
@@ -59,14 +60,15 @@ const ForgotPassword = () => {
     <Grid
       container
       alignItems="center"
-      justify="center"
       style={{ height: "100vh", width: "100vw", backgroundColor: "#1d2634" }}>
       <Paper style={paperStyle}>
         <Grid container direction="column" alignItems="center" spacing={2}>
           <Avatar style={avatarStyle}>
-            <EmailRounded />
+            <LockOutlinedIcon />
           </Avatar>
-          <Typography variant="h5">Forgot Password</Typography>
+          <Typography variant="h5" style={{ marginBottom: "10px" }}>
+            Forgot Password
+          </Typography>
         </Grid>
         <p>We will send you a password recovery link to your email</p>
         <Formik
@@ -92,7 +94,7 @@ const ForgotPassword = () => {
                   }}
                 />
               </div>
-              <div style={btnContainerStyle}>
+              <div style={{ textAlign: "center", marginTop: 20 }}>
                 <Button
                   type="submit"
                   variant="contained"
@@ -114,7 +116,7 @@ const ForgotPassword = () => {
         </div>
         <div style={marginTop}>
           <Typography>
-            <Link href="/"> Login? </Link>
+            <Link to="/"> Login? </Link>
           </Typography>
         </div>
       </Paper>
