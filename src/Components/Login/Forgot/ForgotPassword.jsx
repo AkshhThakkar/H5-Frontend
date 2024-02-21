@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 const ForgotPassword = () => {
   const paperStyle = {
     padding: 20,
-    height: "50vh",
+    height: "53vh",
     width: 300,
     margin: "0 auto",
     backgroundColor: "#f0f3f5",
@@ -33,6 +33,7 @@ const ForgotPassword = () => {
   const marginTop = { marginTop: 15 };
 
   const [message, setMessage] = useState("");
+  const [messageColor, setMessageColor] = useState("");
 
   const initialValues = {
     email: "",
@@ -43,15 +44,25 @@ const ForgotPassword = () => {
   });
 
   const handleForgotPassword = async (values, { setSubmitting }) => {
+    console.log("Submitting forgot password request with email:", values.email);
     try {
       const response = await axios.post(
         "http://192.168.3.237:5760/api/pass/forgot-password",
         { email: values.email }
       );
+      console.log("Forgot password request successful:", response.data);
       setMessage(response.data.message);
+      setMessageColor("green");
     } catch (error) {
       console.error("Error:", error);
-      setMessage("An error occurred. Please try again later.");
+      if (error.response && error.response.status === 404) {
+        console.log("User not found.");
+        setMessage("User not found");
+      } else {
+        console.log("An error occurred. Please try again later.");
+        setMessage("An error occurred. Please try again later.");
+      }
+      setMessageColor("red");
     }
     setSubmitting(false);
   };
@@ -112,7 +123,9 @@ const ForgotPassword = () => {
           )}
         </Formik>
         <div style={marginTop}>
-          {message && <Typography>{message}</Typography>}
+          {message && (
+            <Typography style={{ color: messageColor }}>{message}</Typography>
+          )}
         </div>
         <div style={marginTop}>
           <Typography>
