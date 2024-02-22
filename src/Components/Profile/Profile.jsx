@@ -1,55 +1,105 @@
 import React from "react";
-import { Grid, Paper, Avatar, Typography, Button } from "@material-ui/core";
-import { Person, EmailRounded, PhoneAndroidRounded } from "@material-ui/icons";
+import "./Profile.css";
 
-const Profile = ({ user }) => {
-  const paperStyle = { padding: 20, width: 300, margin: "0 auto" };
-  const headerStyle = { margin: 10 };
-  const avatarStyle = { backgroundColor: "#3498db", color: "#ffffff" };
-  const containerStyle = {
-    height: "100vh",
-    width: "100vw",
-    position: "fixed",
-    top: 0,
-    left: 0,
-    zIndex: 9999,
-    background: "#fff",
-    overflowY: "auto",
-  };
-
-  if (!user) {
-    return null; // Render nothing if user is not defined
-  }
-
+function Profile() {
   return (
-    <Grid
-      container
-      alignItems="center"
-      justifyContent="center"
-      style={containerStyle}>
-      <Paper style={paperStyle}>
-        <Grid container direction="column" alignItems="center" spacing={2}>
-          <Avatar style={avatarStyle}>
-            <Person />
-          </Avatar>
-          <Typography variant="h5" style={headerStyle}>
-            Profile
-          </Typography>
-          <Typography variant="subtitle1">Username: {user.username}</Typography>
-          <Typography variant="subtitle1">Email: {user.email}</Typography>
-          <Typography variant="subtitle1">
-            Gender: {user.gender.charAt(0).toUpperCase() + user.gender.slice(1)}
-          </Typography>
-          <Typography variant="subtitle1">
-            Phone Number: {user.mobile}
-          </Typography>
-          <Button variant="contained" color="primary">
-            Edit Profile
-          </Button>
-        </Grid>
-      </Paper>
-    </Grid>
+    <div className="profile-container">
+      <header className="profile-header">
+        <h1>Profiles</h1>
+      </header>
+      <div className="profiles">
+        {/* Main User */}
+        <div className="profile main-profile">
+          <div className="profile-info">
+            <div className="user-info">
+              <img
+                src="https://avatarfiles.alphacoders.com/327/327326.jpg"
+                alt="Profile"
+                className="profile-image"
+              />
+              <div className="user-details">
+                <h2 className="username">Aksh Thakkar</h2>
+                <p className="email">Email: aksht455@gmail.com</p>
+                <p className="location">Location: New York, United States</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Other Users arranged in 2x2 format */}
+        <div className="profile-grid">
+          {/* User 1 */}
+          <div className="profile">
+            <div className="profile-info">
+              <div className="user-info">
+                <img
+                  src="https://qph.cf2.quoracdn.net/main-qimg-ca33c4578b1b17d349203ff24ec94b3f-lq"
+                  alt="Profile"
+                  className="profile-image"
+                />
+                <div className="user-details">
+                  <h2 className="username">Yash Chauhan</h2>
+                  <p className="email">Email: yashp440789@gmail.com </p>
+                  <p className="location">Location: Funchal, Portugal</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* User 2 */}
+          <div className="profile">
+            <div className="profile-info">
+              <div className="user-info">
+                <img
+                  src="https://i.pinimg.com/564x/74/89/0d/74890d91e11373025d0d437490511acc.jpg"
+                  alt="Profile"
+                  className="profile-image"
+                />
+                <div className="user-details">
+                  <h2 className="username">Vedant Bhatt</h2>
+                  <p className="email">Email: vedantb658@gmail.com</p>
+                  <p className="location">Location: Tokyo, Japan</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* User 3 */}
+          <div className="profile">
+            <div className="profile-info">
+              <div className="user-info">
+                <img
+                  src="https://lh3.googleusercontent.com/proxy/HVtld8fFzZeDQtOrDpN1IQ0gDvzXFG3qMEqSxSf5ggOSGTByiLje4vDYsqZCq3oBb9SpJYMYeCDeN2vbK_kWnJdQmvwiRcpVHd5IXaZtKOtxZYOleWB6FAEZ-HvM2GYr1ZbM "
+                  alt="Profile"
+                  className="profile-image"
+                />
+                <div className="user-details">
+                  <h2 className="username">Smit Chauhan</h2>
+                  <p className="email">Email: smitsinhchauhan89@gmail.com</p>
+                  <p className="location">Location: Toronto, Canada</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* User 4 */}
+          <div className="profile">
+            <div className="profile-info">
+              <div className="user-info">
+                <img
+                  src="https://resize.indiatvnews.com/en/resize/newbucket/715_-/2019/05/1-1556945381.jpeg"
+                  alt="Profile"
+                  className="profile-image"
+                />
+                <div className="user-details">
+                  <h2 className="username">Sonu</h2>
+                  <p className="email">Email: krishchaudhari76@gmail.com</p>
+                  <p className="location">Location: Pattaya, Thailand</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-};
+}
 
 export default Profile;
