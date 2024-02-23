@@ -75,16 +75,22 @@ const Signup = () => {
 
   function handleRegister(payload) {
     axios
-      .post("http://192.168.3.238:5760/api/user/register", payload)
+      .post("http://192.168.3.237:5760/api/user/register", payload)
       .then((res) => {
         console.log(res);
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.response.data);
-        if (error.response && error.response.data.code === 11000) {
-          setErrorMessage("Username or email or number already exists");
+        if (error.response && error.response.data) {
+          console.log(error.response.data);
+          if (error.response.data.code === 11000) {
+            setErrorMessage("Username or email or number already exists");
+          } else {
+            setErrorMessage("An error occurred. Please try again later.");
+          }
         } else {
+          // Handle other types of errors, or if error.response is undefined
+          console.log(error);
           setErrorMessage("An error occurred. Please try again later.");
         }
       });

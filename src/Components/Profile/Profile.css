@@ -62,3 +62,14 @@
 .location {
   margin-bottom: 10px;
 }
+
+.profile-container::-webkit-scrollbar {
+  width: 10px; /* Adjust width as needed */
+}
+.profile-container::-webkit-scrollbar-track {
+  background-color: #f5f5f5; /* Light background */
+}
+.profile-container::-webkit-scrollbar-thumb {
+  background-color: #ddd; /* Darker background */
+  border-radius: 5px; /* Add rounded corners */
+}

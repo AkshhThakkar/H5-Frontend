@@ -67,7 +67,7 @@ function Profile() {
             <div className="profile-info">
               <div className="user-info">
                 <img
-                  src="https://lh3.googleusercontent.com/proxy/HVtld8fFzZeDQtOrDpN1IQ0gDvzXFG3qMEqSxSf5ggOSGTByiLje4vDYsqZCq3oBb9SpJYMYeCDeN2vbK_kWnJdQmvwiRcpVHd5IXaZtKOtxZYOleWB6FAEZ-HvM2GYr1ZbM "
+                  src="http://m.gettywallpapers.com/wp-content/uploads/2023/11/Cool-Iron-Man-pfp.jpg"
                   alt="Profile"
                   className="profile-image"
                 />
@@ -89,7 +89,7 @@ function Profile() {
                   className="profile-image"
                 />
                 <div className="user-details">
-                  <h2 className="username">Sonu</h2>
+                  <h2 className="username">Krish</h2>
                   <p className="email">Email: krishchaudhari76@gmail.com</p>
                   <p className="location">Location: Pattaya, Thailand</p>
                 </div>

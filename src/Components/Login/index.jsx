@@ -58,9 +58,16 @@ const Login = () => {
     axios
       .post("http://192.168.3.237:5760/api/user/login", payload)
       .then((res) => {
-        console.log(res);
-        dispatch(login(res.data.result));
-        navigate("/dashboard");
+        console.log("Response data:", res.data);
+        if (res.data && res.data.data && res.data.data.token) {
+          console.log("User logged in successfully");
+          dispatch(login(res.data.data)); // Assuming `data` contains user and token
+          navigate("/dashboard");
+        } else {
+          console.log("Invalid response format:", res.data);
+          setErrorMessage("Invalid response format. Please try again.");
+          props.resetForm(); // Resetting form values
+        }
       })
       .catch((error) => {
         console.error("Error occurred during login:", error);
@@ -68,11 +75,13 @@ const Login = () => {
           error.response &&
           (error.response.status === 401 || error.response.status === 403)
         ) {
+          console.log("Invalid credentials:", error.response);
           setErrorMessage(
             "Invalid username or password. Please refresh the page and try again."
           );
           props.resetForm(); // Resetting form values
         } else if (error && error.code === "ECONNREFUSED") {
+          console.log("Failed to connect to the server:", error);
           setErrorMessage(
             "Failed to connect to the server. Please check your internet connection or try again later."
           );
@@ -80,6 +89,7 @@ const Login = () => {
             window.location.reload();
           }, 4000); // Refresh page after 4 seconds
         } else {
+          console.log("Unexpected error occurred:", error);
           setErrorMessage(
             "An unexpected error occurred while logging in. Please try again later."
           );
@@ -90,6 +100,7 @@ const Login = () => {
       });
   }
 
+  console.log("Rendering Login component");
   const { values, errors, handleChange } = useFormik({
     initialValues: initialValues,
   });
