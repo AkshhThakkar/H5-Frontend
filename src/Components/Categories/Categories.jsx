@@ -1,5 +1,5 @@
 import React from "react";
-import "./Categories.css  ";
+import "./Categories.css";
 
 const Categories = () => {
   // Sample category data (replace with your actual category data)

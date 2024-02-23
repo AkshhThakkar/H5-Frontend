@@ -84,7 +84,7 @@ function Profile() {
             <div className="profile-info">
               <div className="user-info">
                 <img
-                  src="https://resize.indiatvnews.com/en/resize/newbucket/715_-/2019/05/1-1556945381.jpeg"
+                  src="https://avatarfiles.alphacoders.com/246/246608.jpg"
                   alt="Profile"
                   className="profile-image"
                 />

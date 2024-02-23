@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate hook
+import { useNavigate } from "react-router-dom";
 import {
   BsFillArchiveFill,
   BsFillGrid3X3GapFill,
@@ -8,8 +8,7 @@ import {
 } from "react-icons/bs";
 
 const Dashboard = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
-
+  const navigate = useNavigate();
   const productData = [
     {
       id: "inventory",
@@ -42,7 +41,7 @@ const Dashboard = () => {
   ];
 
   const handleCardClick = (path) => {
-    navigate(path); // Navigate to the specified path
+    navigate(path);
   };
 
   const WrapperComp = ({ Component }) => <Component className="card_icon" />;

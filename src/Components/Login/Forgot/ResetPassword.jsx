@@ -228,8 +228,9 @@ const ResetPassword = () => {
 
   function handleResetPassword(payload) {
     setIsSubmitting(true);
+    const token = localStorage.getItem("token");
     axios
-      .post("http://192.168.3.237:5760/api/pass/reset-password", payload)
+      .post("http://192.168.3.237:5760/api/pass/reset", { ...payload, token })
       .then((res) => {
         console.log(res);
         setMessage("Password reset successfully!");
