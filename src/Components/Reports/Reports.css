@@ -1,0 +1,58 @@
+reports.css .reports-page {
+  padding: 20px;
+}
+
+.reports-container {
+  margin-top: 50px;
+  margin-left: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.bill-container {
+  border: 1px solid #ccc;
+  align-items: center;
+  height: 110px;
+  padding: 25px;
+  width: 85px;
+  border-radius: 8px;
+}
+
+.bill-container h3 {
+  margin: 0;
+  color: #333;
+}
+
+.bill-container p {
+  margin: 5px 0;
+}
+
+.paid {
+  background-color: #d4edda;
+}
+
+.pending {
+  background-color: #f8d7da;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-right: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

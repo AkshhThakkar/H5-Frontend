@@ -9,7 +9,7 @@ function Inventory() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // Add isLoading state
 
-  const productsPerPage = 6;
+  const productsPerPage = 9;
 
   useEffect(() => {
     axios

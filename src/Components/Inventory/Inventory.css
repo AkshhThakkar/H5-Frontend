@@ -16,9 +16,10 @@
 }
 
 .product-list {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
   justify-content: center;
+  grid-template-columns: repeat(3, 2fr);
 }
 
 .product {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./Components/Header";
 import Sidebar from "./Components/Sidebar";
@@ -14,7 +15,6 @@ import Login from "./Components/Login/index";
 import ForgotPassword from "./Components/Login/Forgot/ForgotPassword";
 import MaybeShowSidebar from "./Components/MaybeShowSidebar";
 import MaybeShowHeader from "./Components/MaybeShowHeader";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Registration from "./Components/Login/Registration";
 import ResetPassword from "./Components/Login/Forgot/ResetPassword";
 

@@ -1,16 +1,9 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import Login from "../Components/Login";
-import Notifications from "../Components/Notifications/Notifications";
+import { useNavigate } from "react-router-dom";
+import Login from "../Components/Login/index";
 import { BsFillBellFill, BsSearch, BsJustify } from "react-icons/bs";
 
 function Header({ OpenSidebar }) {
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/notifications" element={<Notifications />}></Route>
-    </Routes>
-  </BrowserRouter>;
   const navigate = useNavigate();
   const notificationnavigate = useNavigate();
   const handleNotification = () => notificationnavigate("/notifications");

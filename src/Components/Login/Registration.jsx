@@ -75,7 +75,7 @@ const Signup = () => {
 
   function handleRegister(payload) {
     axios
-      .post("http://192.168.3.237:5760/api/user/register", payload)
+      .post("http://192.168.3.238:5760/api/user/register", payload)
       .then((res) => {
         console.log(res);
         navigate("/");
