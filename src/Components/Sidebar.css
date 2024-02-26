@@ -1,0 +1,30 @@
+.sidebar-list-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.sidebar-list-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: #f5f5f5;
+}
+
+.sidebar-list-item > a {
+  transition: color 0.3s ease;
+}
+
+.sidebar-list-item:hover > a {
+  color: #333;
+}
+
+.icon {
+  transition: transform 0.3s ease;
+}
+
+.sidebar-list-item:hover .icon {
+  transform: scale(1.1);
+}
+
+.close_icon {
+  transition: color 0.3s ease;
+}

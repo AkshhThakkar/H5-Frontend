@@ -1,0 +1,57 @@
+.main-container {
+  padding: 20px;
+}
+
+.main-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.main-title h3 {
+  font-size: 24px;
+  color: #fff;
+}
+
+.main-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 20px;
+  color: #fff;
+  margin: 0;
+}
+
+.card_icon {
+  font-size: 36px;
+  color: #fff;
+}
+
+.card h1 {
+  font-size: 32px;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+}

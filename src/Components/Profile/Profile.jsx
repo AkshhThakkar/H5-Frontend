@@ -89,7 +89,7 @@ function Profile() {
                   className="profile-image"
                 />
                 <div className="user-details">
-                  <h2 className="username">Krish</h2>
+                  <h2 className="username">Krish Chaudhari</h2>
                   <p className="email">Email: krishchaudhari76@gmail.com</p>
                   <p className="location">Location: Pattaya, Thailand</p>
                 </div>
