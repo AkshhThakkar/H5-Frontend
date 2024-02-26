@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
+import AvatarGIF from "../../Assets/Avatar.gif";
 import {
   Paper,
   Avatar,
@@ -10,7 +11,6 @@ import {
 } from "@material-ui/core";
 import "./index.css";
 import { Grid } from "@material-ui/core";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import {
   RemoveRedEyeRounded,
   RemoveRedEyeOutlined,
@@ -43,8 +43,6 @@ const Login = () => {
   };
 
   const navigate = useNavigate();
-
-  const avatarStyle = { backgroundColor: "#3498db", color: "#ffffff" };
 
   const btnstyle = { margin: "15px 0" };
 
@@ -123,8 +121,12 @@ const Login = () => {
       style={{ height: "100vh", width: "100vw", backgroundColor: "#1d2634" }}>
       <Paper style={paperStyle}>
         <Grid container direction="column" alignItems="center" spacing={2}>
-          <Avatar style={avatarStyle}>
-            <LockOutlinedIcon />
+          <Avatar style={{ width: 80, height: 80 }}>
+            <img
+              src={AvatarGIF}
+              alt="avatar"
+              style={{ width: "100%", height: "100%" }}
+            />
           </Avatar>
           <h2>Sign In</h2>
         </Grid>
@@ -208,7 +210,12 @@ const Login = () => {
           )}
         </Formik>
         <Typography>
-          <Link href="/forgotpassword">Forgot password ? </Link>
+          <Link
+            to="/register"
+            className="link-no-style"
+            onClick={() => handleChange("event", 1)}>
+            Sign Up
+          </Link>
         </Typography>
         <Typography>
           Do you have an account ?

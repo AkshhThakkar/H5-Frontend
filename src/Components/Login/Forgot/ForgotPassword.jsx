@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ForgotGIF from "../../../Assets/Forgot.gif";
 import {
   Grid,
   Paper,
@@ -9,7 +10,7 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import { EmailRounded } from "@material-ui/icons";
-import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
+
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -21,15 +22,11 @@ const ForgotPassword = () => {
     height: "53vh",
     width: 300,
     margin: "0 auto",
-    backgroundColor: "#f0f3f5",
+    backgroundColor: "#fff",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
     borderRadius: "8px",
   };
-  const avatarStyle = {
-    backgroundColor: "#3498db",
-    color: "#ffffff",
-    marginBottom: "15px",
-  };
+
   const marginTop = { marginTop: 15 };
 
   const [message, setMessage] = useState("");
@@ -74,8 +71,12 @@ const ForgotPassword = () => {
       style={{ height: "100vh", width: "100vw", backgroundColor: "#1d2634" }}>
       <Paper style={paperStyle}>
         <Grid container direction="column" alignItems="center" spacing={2}>
-          <Avatar style={avatarStyle}>
-            <LockOutlinedIcon />
+          <Avatar style={{ width: 80, height: 80 }}>
+            <img
+              src={ForgotGIF}
+              alt="avatar"
+              style={{ width: "100%", height: "100%" }}
+            />
           </Avatar>
           <Typography variant="h5" style={{ marginBottom: "10px" }}>
             Forgot Password

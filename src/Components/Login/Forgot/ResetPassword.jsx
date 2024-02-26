@@ -174,6 +174,7 @@
 
 // export default ResetPassword;
 import React, { useState } from "react";
+import Reset from "../../../Assets/Reset.png";
 import {
   Grid,
   Paper,
@@ -197,11 +198,6 @@ const ResetPassword = () => {
     width: 300,
     margin: "0 auto",
     textAlign: "center",
-  };
-  const avatarStyle = {
-    backgroundColor: "#3498db",
-    color: "#ffffff",
-    margin: "0 auto",
   };
   const marginTop = { marginTop: 20 };
   const initialValues = {
@@ -261,9 +257,14 @@ const ResetPassword = () => {
       alignItems="center"
       style={{ height: "100vh", width: "100vw" }}>
       <Paper style={paperStyle}>
-        <Avatar style={avatarStyle}>
-          <LockOutlinedIcon />
+        <Avatar style={{ width: 80, height: 80, margin: "0 auto" }}>
+          <img
+            src={Reset}
+            alt="avatar"
+            style={{ width: "100%", height: "100%" }}
+          />
         </Avatar>
+
         <Typography variant="h5" style={{ margin: "10px 0" }}>
           Reset Password
         </Typography>

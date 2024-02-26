@@ -54,3 +54,13 @@ body {
 .link a:hover {
   text-decoration: underline;
 }
+.link-no-style {
+  color: inherit;
+  text-decoration: none;
+  outline: none; /* Remove focus outline */
+}
+
+.link-no-style:focus,
+.link-no-style:active {
+  outline: none; /* Remove focus and active state */
+}

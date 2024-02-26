@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import RAvatar from "../../Assets/RAvatar.gif";
 import {
   Grid,
   Paper,
@@ -15,7 +16,6 @@ import {
   PhoneAndroidRounded,
   EmailRounded,
 } from "@material-ui/icons";
-import AddCircleOutlineOutlinedIcon from "@material-ui/icons/AddCircleOutlineOutlined";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -30,8 +30,6 @@ import "./Registration.css";
 
 const Signup = () => {
   const paperStyle = { padding: 20, width: 300, margin: "0 auto" };
-  const headerStyle = { margin: 0 };
-  const avatarStyle = { backgroundColor: "#3498db", color: "#ffffff" };
   const marginTop = { marginTop: 9 };
   const initialValues = {
     username: "",
@@ -111,12 +109,13 @@ const Signup = () => {
       style={{ height: "100vh", width: "100vw" }}>
       <Paper style={paperStyle}>
         <Grid container direction="column" alignItems="center" spacing={2}>
-          <Avatar style={avatarStyle}>
-            <AddCircleOutlineOutlinedIcon />
+          <Avatar style={{ width: 70, height: 70 }}>
+            <img
+              src={RAvatar}
+              alt="avatar"
+              style={{ width: "100%", height: "100%" }}
+            />
           </Avatar>
-          <Typography variant="h5" style={headerStyle}>
-            Sign Up
-          </Typography>
           <Typography
             variant="caption"
             gutterBottom
