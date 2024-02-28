@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 const ForgotPassword = () => {
   const paperStyle = {
     padding: 20,
-    height: "53vh",
+    height: "55vh",
     width: 300,
     margin: "0 auto",
     backgroundColor: "#fff",

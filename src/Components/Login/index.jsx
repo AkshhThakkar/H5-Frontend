@@ -59,12 +59,12 @@ const Login = () => {
         console.log("Response data:", res.data);
         if (res.data && res.data.data && res.data.data.token) {
           console.log("User logged in successfully");
-          dispatch(login(res.data.data)); // Assuming `data` contains user and token
+          dispatch(login(res.data.data));
           navigate("/dashboard");
         } else {
           console.log("Invalid response format:", res.data);
           setErrorMessage("Invalid response format. Please try again.");
-          props.resetForm(); // Resetting form values
+          props.resetForm();
         }
       })
       .catch((error) => {
@@ -210,12 +210,7 @@ const Login = () => {
           )}
         </Formik>
         <Typography>
-          <Link
-            to="/register"
-            className="link-no-style"
-            onClick={() => handleChange("event", 1)}>
-            Sign Up
-          </Link>
+          <Link href="/forgotpassword">Forgot Password?</Link>
         </Typography>
         <Typography>
           Do you have an account ?
