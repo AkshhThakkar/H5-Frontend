@@ -7,10 +7,8 @@ import {
   TextField,
   Button,
   Typography,
-  Link,
+  Grid,
 } from "@material-ui/core";
-import "./index.css";
-import { Grid } from "@material-ui/core";
 import {
   RemoveRedEyeRounded,
   RemoveRedEyeOutlined,
@@ -21,7 +19,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { login } from "../../Redux/UsersSlice";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
@@ -43,13 +41,8 @@ const Login = () => {
   };
 
   const navigate = useNavigate();
-
-  const btnstyle = { margin: "15px 0" };
-
   const dispatch = useDispatch();
-
   const [visible, setVisible] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState("");
 
   function handleLogin(payload, props) {
@@ -77,7 +70,7 @@ const Login = () => {
           setErrorMessage(
             "Invalid username or password. Please refresh the page and try again."
           );
-          props.resetForm(); // Resetting form values
+          props.resetForm();
         } else if (error && error.code === "ECONNREFUSED") {
           console.log("Failed to connect to the server:", error);
           setErrorMessage(
@@ -85,7 +78,7 @@ const Login = () => {
           );
           setTimeout(() => {
             window.location.reload();
-          }, 4000); // Refresh page after 4 seconds
+          }, 4000);
         } else {
           console.log("Unexpected error occurred:", error);
           setErrorMessage(
@@ -93,7 +86,7 @@ const Login = () => {
           );
           setTimeout(() => {
             window.location.reload();
-          }, 4000); // Refresh page after 4 seconds
+          }, 4000);
         }
       });
   }
@@ -135,7 +128,7 @@ const Login = () => {
           onSubmit={handleLogin}
           validationSchema={validationSchema}>
           {(props) => (
-            <Form onClick={onsubmit}>
+            <Form onClick={onSubmit}>
               <div style={{ marginBottom: "20px" }}>
                 <Field
                   as={TextField}
@@ -193,7 +186,7 @@ const Login = () => {
                 color="primary"
                 variant="contained"
                 disabled={props.isSubmitting}
-                style={btnstyle}
+                style={{ margin: "15px 0", width: "100%" }}
                 fullWidth>
                 {props.isSubmitting ? (
                   <CircularProgress size={24} color="inherit" />
@@ -210,13 +203,20 @@ const Login = () => {
           )}
         </Formik>
         <Typography>
-          <Link href="/forgotpassword">Forgot Password?</Link>
+          <NavLink
+            to="/forgotpassword"
+            style={{ textDecoration: "none", color: "#6A5ACD" }}>
+            Forgot Password?
+          </NavLink>
         </Typography>
         <Typography>
           Do you have an account ?
-          <Link href="/register" onClick={() => handleChange("event", 1)}>
+          <NavLink
+            to="/register"
+            style={{ textDecoration: "none", color: "#6A5ACD" }}
+            onClick={() => handleChange("event", 1)}>
             Sign Up
-          </Link>
+          </NavLink>
         </Typography>
       </Paper>
     </Grid>

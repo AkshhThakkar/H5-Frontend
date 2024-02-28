@@ -66,11 +66,18 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
 
       <ul className="sidebar-list">
         {sidebarMenu.map((data) => (
-          <li className="sidebar-list-item" key={data.id}>
-            <Link to={data.route}>
+          <Link
+            to={data.route}
+            style={{
+              textDecoration: "none",
+              color: "#9e9ea4",
+              transition: "color 0.3s ease",
+            }}
+            key={data.id}>
+            <li className="sidebar-list-item">
               <WrapperComp Component={data.component} /> {data.title}
-            </Link>
-          </li>
+            </li>
+          </Link>
         ))}
       </ul>
     </aside>
