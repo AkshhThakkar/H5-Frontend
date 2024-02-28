@@ -1,43 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Reports.css";
 
 const Reports = () => {
+  const [bills, setBills] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const billsPerPage = 6; // Adjust to display 6 bills per page for pagination
+  const billsPerPage = 6;
 
-  // Assuming bills is an array containing your bill data with status
-  const bills = [
-    { id: 1, name: "Bill 1", amount: 900, status: "paid" },
-    { id: 2, name: "Bill 2", amount: 500, status: "pending" },
-    { id: 3, name: "Bill 3", amount: 399, status: "paid" },
-    { id: 4, name: "Bill 4", amount: 830, status: "paid" },
-    { id: 5, name: "Bill 5", amount: 590, status: "paid" },
-    { id: 6, name: "Bill 6", amount: 623, status: "pending" },
-    { id: 7, name: "Bill 7", amount: 1000, status: "paid" },
-    { id: 8, name: "Bill 8", amount: 200, status: "pending" },
-    { id: 9, name: "Bill 9", amount: 300, status: "paid" },
-    { id: 28, name: "Bill 28", amount: 2800, status: "pending" },
-    // Add more bills here
-  ];
+  useEffect(() => {
+    const fetchBills = async () => {
+      try {
+        const response = await axios.get(
+          "http://192.168.3.237:5760/api/sales/show"
+        );
+        console.log("Response from backend:", response.data);
+        setBills(response.data.result);
+      } catch (error) {
+        console.error("Error fetching bills:", error);
+      }
+    };
 
-  // Calculate index of the first and last bill on the current page
+    fetchBills();
+  }, []);
+
   const indexOfLastBill = currentPage * billsPerPage;
   const indexOfFirstBill = indexOfLastBill - billsPerPage;
   const currentBills = bills.slice(indexOfFirstBill, indexOfLastBill);
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="reports-page">
       <div className="reports-container">
-        {currentBills.map((bill) => (
-          <div key={bill.id} className={`bill-container ${bill.status}`}>
-            <h3>{bill.name}</h3>
-            <p>Amount: ₹{bill.amount}</p>
-            <p>Status: {bill.status}</p>
-          </div>
-        ))}
+        {currentBills.length > 0 ? (
+          currentBills.map((bill, index) => (
+            <div key={index} className={`bill-container ${bill.status}`}>
+              <h3>Product: {bill.product}</h3>
+              <p>Price: ₹{bill.price}</p>
+              <p>Quantity: {bill.quantity}</p>
+            </div>
+          ))
+        ) : (
+          <div>No bills available.</div>
+        )}
       </div>
       <div className="pagination">
         <button
