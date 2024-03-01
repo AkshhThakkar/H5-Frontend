@@ -1,30 +1,31 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./sales.css";
 
 function Sales() {
   const [price, setPrice] = useState(0);
   const [qty, setQty] = useState(0);
   const [total, setTotal] = useState(0);
-
   const [users, setUsers] = useState([]);
-  const [name, setName] = useState();
-
-  const [sum, setSum] = useState();
+  const [name, setName] = useState("");
+  const [sum, setSum] = useState(0);
 
   function Calculation() {
-    users.push({ name, qty, price, sum });
+    // Check if name has a value before adding
+    if (name.trim() !== "") {
+      users.push({ name, qty, price, sum });
 
-    const total = users.reduce((total, user) => {
-      total += Number(user.sum);
-      return total;
-    }, 0);
-    // you want this
-    setTotal(total);
-    // Clear the input fields
-    setName("");
-    setQty("");
-    setPrice("");
-    setSum("");
+      const newTotal = users.reduce((total, user) => {
+        return total + Number(user.sum);
+      }, 0);
+
+      setTotal(newTotal);
+
+      // Clear the input fields
+      setName("");
+      setQty(0);
+      setPrice(0);
+      setSum(0);
+    }
   }
 
   const handlePriceChange = (e) => {
@@ -35,7 +36,6 @@ function Sales() {
     }
   };
 
-  // Event handler for quantity selection
   const handleQuantityChange = (e) => {
     const newQuantity = parseInt(e.target.value);
     if (!isNaN(newQuantity)) {
@@ -44,7 +44,6 @@ function Sales() {
     }
   };
 
-  // Calculate the total based on price and quantity
   const calculateTotal = (price, qty) => {
     const newTotal = price * qty;
     setSum(newTotal);
@@ -169,8 +168,7 @@ function Sales() {
               type="button"
               className="btn btn-success"
               onClick={refreshPage}>
-              {" "}
-              <span>Complete</span>{" "}
+              <span>Complete</span>
             </button>
           </div>
         </div>

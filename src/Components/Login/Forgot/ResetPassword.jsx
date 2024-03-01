@@ -8,6 +8,7 @@ import {
   TextField,
   Button,
   CircularProgress,
+  Snackbar,
 } from "@material-ui/core";
 import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
 import { RemoveRedEyeRounded, RemoveRedEyeOutlined } from "@material-ui/icons";
@@ -18,7 +19,7 @@ import axios from "axios";
 
 const ResetPassword = () => {
   const paperStyle = {
-    height: 350,
+    height: 380,
     padding: 20,
     width: 300,
     margin: "0 auto",
@@ -37,6 +38,11 @@ const ResetPassword = () => {
   const [message, setMessage] = useState("");
   const [messageColor, setMessageColor] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   const validationSchema = Yup.object().shape({
     password: Yup.string()
@@ -46,31 +52,38 @@ const ResetPassword = () => {
       .oneOf([Yup.ref("password")], "Passwords do not match")
       .required("Confirm password is required"),
   });
+  const token = new URLSearchParams(window.location.search);
+  const id = new URLSearchParams(window.location.search);
 
-  function handleResetPassword(payload) {
+  const handleResetPassword = (payload) => {
     setIsSubmitting(true);
-    const token = new URLSearchParams(window.location.search).get("token");
-    console.log("Payload:", payload);
-    console.log("Token:", token);
+    const newPassword = payload.password;
+
     axios
-      .post("http://192.168.3.237:5760/api/pass/reset", { ...payload, token })
+      .post("http://192.168.3.237:5770/api/pass/reset", {
+        token: token.get("token"),
+        id: id.get("id"),
+        newPassword: newPassword,
+      })
       .then((res) => {
         console.log(res);
         setMessage("Password reset successfully!");
         setMessageColor("green");
+        setSnackbarOpen(true);
         setTimeout(() => {
           navigate("/");
-        }, 3000);
+        }, 1500);
       })
       .catch((error) => {
         console.log("Error:", error);
         setMessage("An error occurred. Please try again later.");
         setMessageColor("red");
+        setSnackbarOpen(true);
       })
       .finally(() => {
         setIsSubmitting(false);
       });
-  }
+  };
 
   const onSubmit = (values, action) => {
     handleResetPassword(values);
@@ -185,13 +198,22 @@ const ResetPassword = () => {
             </Form>
           )}
         </Formik>
-        {message && (
-          <Typography
-            variant="body2"
-            style={{ color: messageColor, marginTop: 10 }}>
-            {message}
-          </Typography>
-        )}
+        <Snackbar
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+          open={snackbarOpen}
+          autoHideDuration={6000}
+          onClose={handleSnackbarClose}
+          message={message}
+          ContentProps={{
+            style: {
+              backgroundColor: messageColor === "green" ? "green" : "red",
+              fontWeight: "bold",
+            },
+          }}
+        />
       </Paper>
     </Grid>
   );

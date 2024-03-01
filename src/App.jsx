@@ -17,6 +17,7 @@ import MaybeShowSidebar from "./Components/MaybeShowSidebar";
 import MaybeShowHeader from "./Components/MaybeShowHeader";
 import Registration from "./Components/Login/Registration";
 import ResetPassword from "./Components/Login/Forgot/ResetPassword";
+import NotFound from "./Components/NotFound/index"; // Import your NotFound component
 
 function App() {
   const user = {
@@ -35,12 +36,10 @@ function App() {
     <div className="grid-container">
       <BrowserRouter>
         <MaybeShowSidebar>
-          {
-            <Sidebar
-              openSidebarToggle={openSidebarToggle}
-              OpenSidebar={OpenSidebar}
-            />
-          }
+          <Sidebar
+            openSidebarToggle={openSidebarToggle}
+            OpenSidebar={OpenSidebar}
+          />
         </MaybeShowSidebar>
         <MaybeShowHeader>
           <Header OpenSidebar={OpenSidebar} />
@@ -58,6 +57,8 @@ function App() {
           <Route path="/reports" element={<Reports />} />
           <Route path="/profile" element={<Profile user={user} />} />
           <Route path="/notifications" element={<Notifications />} />
+          {/* Catch-all route */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

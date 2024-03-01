@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Login from "../Components/Login/index";
 import { BsFillBellFill, BsSearch, BsJustify } from "react-icons/bs";
 
 function Header({ OpenSidebar }) {

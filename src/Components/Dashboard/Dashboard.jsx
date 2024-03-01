@@ -12,13 +12,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const productData = [
     {
-      id: "inventory",
-      title: "INVENTORY",
-      value: 300,
-      component: BsFillArchiveFill,
-      path: "/inventory",
-    },
-    {
       id: "categories",
       title: "CATEGORIES",
       value: 12,
@@ -26,11 +19,11 @@ const Dashboard = () => {
       path: "/categories",
     },
     {
-      id: "customers",
-      title: "CUSTOMERS",
-      value: 33,
-      component: BsFillPeopleFill,
-      path: "/customers",
+      id: "inventory",
+      title: "INVENTORY",
+      value: 300,
+      component: BsFillArchiveFill,
+      path: "/inventory",
     },
     {
       id: "reports",
@@ -38,6 +31,13 @@ const Dashboard = () => {
       value: 42,
       component: BsReceipt,
       path: "/reports",
+    },
+    {
+      id: "customers",
+      title: "CUSTOMERS",
+      value: 33,
+      component: BsFillPeopleFill,
+      path: "/customers",
     },
   ];
 

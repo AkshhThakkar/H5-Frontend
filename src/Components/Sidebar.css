@@ -1,4 +1,4 @@
-.sidebar-list-item {
+sidebar-list-item {
   transition: transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
 }
@@ -23,6 +23,10 @@
 
 .sidebar-list-item:hover .icon {
   transform: scale(1.1);
+}
+
+.sidebar-list-item:hover {
+  color: #000;
 }
 
 .close_icon {

@@ -46,3 +46,93 @@
 .product-inventory {
   color: #ccc;
 }
+
+/* Inventory.css */
+
+.add-product-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.add-product-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-product-form input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.add-product-form button {
+  display: block;
+  margin-top: 10px;
+}
+
+/* Inventory.css */
+
+.add-product-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #333333; /* Dark blue color complementary to theme */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.add-product-form input,
+.add-product-form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.add-product-form input[type="file"] {
+  cursor: pointer;
+}
+
+.add-product-form button {
+  max-width: 200px;
+}
+
+.add-product-form .button-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.add-product-form .button-group button {
+  width: 48%; /* Adjusted width to fit two buttons side by side */
+}
+
+.add-product-form .button-group button:first-child {
+  background-color: #007bff; /* Blue colored background for Add Product button */
+  color: white;
+}
+
+.add-product-form .button-group button:last-child {
+  background-color: #dc3545 !important;
+  color: white;
+}
+
+.add-product-form .button-group button:hover {
+  opacity: 0.8;
+}
