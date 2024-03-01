@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import AvatarGIF from "../../Assets/Avatar.gif";
 import {
   Paper,
@@ -8,6 +8,7 @@ import {
   Button,
   Typography,
   Grid,
+  Snackbar,
 } from "@material-ui/core";
 import {
   RemoveRedEyeRounded,
@@ -29,7 +30,7 @@ const initialValues = {
   password: "",
 };
 
-const SignIn = () => {
+const Login = () => {
   const paperStyle = {
     padding: 20,
     height: "75vh",
@@ -40,10 +41,22 @@ const SignIn = () => {
     borderRadius: "8px",
   };
 
+  const snackbarStyle = {
+    backgroundColor: "#5f72f3",
+    color: "white",
+    textAlign: "center",
+    borderRadius: "12px",
+    width: "400px",
+    margin: "20vh auto", // Adjusted margin to position somewhat above the middle
+    padding: "20px",
+  };
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   function handleLogin(payload, props) {
     axios
@@ -53,7 +66,12 @@ const SignIn = () => {
         if (res.data && res.data.data && res.data.data.token) {
           console.log("User logged in successfully");
           dispatch(login(res.data.data));
-          navigate("/dashboard");
+          setSnackbarMessage("Login Successful");
+          setSnackbarOpen(true);
+          setTimeout(() => {
+            navigate("/dashboard"); // Redirect to dashboard after successful login
+          }, 1500);
+          props.resetForm();
         } else {
           console.log("Invalid response format:", res.data);
           setErrorMessage("Invalid response format. Please try again.");
@@ -91,22 +109,11 @@ const SignIn = () => {
       });
   }
 
-  console.log("Rendering Login component");
-  const { values, errors, handleChange } = useFormik({
-    initialValues: initialValues,
-  });
-  const onSubmit = (values, props) => {
-    console.log(values);
-    handleLogin(values, props);
-    console.log("🚀 ~ Login ~ values:", values);
-    setTimeout(() => {}, 2000);
-  };
   const validationSchema = Yup.object().shape({
     username: Yup.string().required("Required"),
     password: Yup.string().required("Required"),
   });
 
-  console.log(" file: index.jsx ~ Login ~ errors", errors);
   return (
     <Grid
       container
@@ -125,7 +132,7 @@ const SignIn = () => {
         </Grid>
         <Formik
           initialValues={initialValues}
-          onSubmit={onSubmit}
+          onSubmit={(values, props) => handleLogin(values, props)}
           validationSchema={validationSchema}>
           {(props) => (
             <Form>
@@ -213,14 +220,22 @@ const SignIn = () => {
           Do you have an account ?
           <NavLink
             to="/register"
-            style={{ textDecoration: "none", color: "#6A5ACD" }}
-            onClick={() => handleChange("event", 1)}>
+            style={{ textDecoration: "none", color: "#6A5ACD" }}>
             Sign Up
           </NavLink>
         </Typography>
       </Paper>
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={() => setSnackbarOpen(false)}>
+        <Paper elevation={3} style={snackbarStyle}>
+          {snackbarMessage}
+        </Paper>
+      </Snackbar>
     </Grid>
   );
 };
 
-export default SignIn;
+export default Login;

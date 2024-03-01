@@ -1,15 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Profile.css";
 
 function Profile() {
-  // State to keep track of the active user
-  const [activeUser, setActiveUser] = useState(null);
-
-  // Function to handle click on a profile
-  const handleProfileClick = (user) => {
-    setActiveUser(user);
-  };
-
   return (
     <div className="profile-container">
       <header className="profile-header">
@@ -17,11 +9,7 @@ function Profile() {
       </header>
       <div className="profiles">
         {/* Main User */}
-        <div
-          className={`profile main-profile ${
-            activeUser === "main" ? "active" : ""
-          }`}
-          onClick={() => handleProfileClick("main")}>
+        <div className="profile main-profile">
           <div className="profile-info">
             <div className="user-info">
               <img
@@ -34,7 +22,6 @@ function Profile() {
                 <p className="email">Email: aksht455@gmail.com</p>
                 <p className="location">Location: New York, United States</p>
               </div>
-              {activeUser === "main" && <div className="active-dot"></div>}
             </div>
           </div>
         </div>
@@ -42,11 +29,7 @@ function Profile() {
         {/* Other Users arranged in 2x2 format */}
         <div className="profile-grid">
           {/* User 1 */}
-          <div
-            className={`profile ${
-              activeUser === "Yash Chauhan" ? "active" : ""
-            }`}
-            onClick={() => handleProfileClick("Yash Chauhan")}>
+          <div className="profile">
             <div className="profile-info">
               <div className="user-info">
                 <img
@@ -59,14 +42,60 @@ function Profile() {
                   <p className="email">Email: yashp440789@gmail.com </p>
                   <p className="location">Location: Funchal, Portugal</p>
                 </div>
-                {activeUser === "Yash Chauhan" && (
-                  <div className="active-dot"></div>
-                )}
               </div>
             </div>
           </div>
           {/* User 2 */}
-          {/* Include similar code for other users */}
+          <div className="profile">
+            <div className="profile-info">
+              <div className="user-info">
+                <img
+                  src="https://i.pinimg.com/564x/74/89/0d/74890d91e11373025d0d437490511acc.jpg"
+                  alt="Profile"
+                  className="profile-image"
+                />
+                <div className="user-details">
+                  <h2 className="username">Vedant Bhatt</h2>
+                  <p className="email">Email: vedantb658@gmail.com</p>
+                  <p className="location">Location: Tokyo, Japan</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* User 3 */}
+          <div className="profile">
+            <div className="profile-info">
+              <div className="user-info">
+                <img
+                  src="http://m.gettywallpapers.com/wp-content/uploads/2023/11/Cool-Iron-Man-pfp.jpg"
+                  alt="Profile"
+                  className="profile-image"
+                />
+                <div className="user-details">
+                  <h2 className="username">Smit Chauhan</h2>
+                  <p className="email">Email: smitsinhchauhan89@gmail.com</p>
+                  <p className="location">Location: Toronto, Canada</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* User 4 */}
+          <div className="profile">
+            <div className="profile-info">
+              <div className="user-info">
+                <img
+                  src="https://avatarfiles.alphacoders.com/246/246608.jpg"
+                  alt="Profile"
+                  className="profile-image"
+                />
+                <div className="user-details">
+                  <h2 className="username">Krish Chaudhari</h2>
+                  <p className="email">Email: krishchaudhari76@gmail.com</p>
+                  <p className="location">Location: Pattaya, Thailand</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
