@@ -26,9 +26,8 @@ import { Formik, Field, Form, ErrorMessage, useFormik } from "formik";
 import { FormHelperText } from "@material-ui/core";
 import * as Yup from "yup";
 import axios from "axios";
-import "./Registration.css";
 
-const Signup = () => {
+const SignUp = () => {
   const paperStyle = { padding: 20, width: 300, margin: "0 auto" };
   const marginTop = { marginTop: 9 };
   const initialValues = {
@@ -293,4 +292,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUp;

@@ -11,13 +11,13 @@ import Inventory from "./Components/Inventory/Inventory";
 import Reports from "./Components/Reports/Reports";
 import Profile from "./Components/Profile/Profile";
 import Notifications from "./Components/Notifications/Notifications";
-import Login from "./Components/Login/index";
-import ForgotPassword from "./Components/Login/Forgot/ForgotPassword";
+import SignIn from "./Components/Login/SignIn";
+import ForgotPassword from "./Components/Login/ForgotPassword";
 import MaybeShowSidebar from "./Components/MaybeShowSidebar";
 import MaybeShowHeader from "./Components/MaybeShowHeader";
-import Registration from "./Components/Login/Registration";
-import ResetPassword from "./Components/Login/Forgot/ResetPassword";
-import NotFound from "./Components/NotFound/index"; // Import your NotFound component
+import SignUp from "./Components/Login/SignUp";
+import ResetPassword from "./Components/Login/ResetPassword";
+import NotFound from "./Components/NotFound/index";
 
 function App() {
   const user = {
@@ -45,8 +45,8 @@ function App() {
           <Header OpenSidebar={OpenSidebar} />
         </MaybeShowHeader>
         <Routes>
-          <Route exact path="/" element={<Login />} />
-          <Route exact path="/register" element={<Registration />} />
+          <Route exact path="/" element={<SignIn />} />
+          <Route exact path="/register" element={<SignUp />} />
           <Route exact path="/forgotpassword" element={<ForgotPassword />} />
           <Route exact path="/reset" element={<ResetPassword />} />
           <Route exact path="/dashboard" element={<Dashboard />} />

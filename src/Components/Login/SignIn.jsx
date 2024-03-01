@@ -255,7 +255,7 @@ const initialValues = {
   password: "",
 };
 
-const Login = () => {
+const SignIn = () => {
   const paperStyle = {
     padding: 20,
     height: "75vh",
@@ -449,4 +449,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;
