@@ -71,7 +71,7 @@ const ForgotPassword = () => {
       style={{ height: "100vh", width: "100vw", backgroundColor: "#1d2634" }}>
       <Paper style={paperStyle}>
         <Grid container direction="column" alignItems="center" spacing={2}>
-          <Avatar style={{ width: 80, height: 80 }}>
+          <Avatar style={{ width: 100, height: 100 }}>
             <img
               src={ForgotGIF}
               alt="avatar"

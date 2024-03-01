@@ -1,5 +1,74 @@
+.product-list {
+  display: grid;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.product {
+  width: auto;
+  min-width: 200px;
+  height: auto;
+  min-height: 300px;
+  margin: 12px;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+
+.product-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0 0 8px 8px;
+  text-align: center;
+}
+
+.product-name {
+  margin: 5px 0;
+  text-align: center;
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
+
+.product-price {
+  margin: 5px 0;
+  text-align: center;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+}
+
+.product-inventory {
+  margin: 5px 0;
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+}
+
+.product-name {
+  font-weight: bold;
+}
+
 .pagination {
   margin-top: 20px;
+  text-align: center;
 }
 
 .pagination button {
@@ -15,124 +84,95 @@
   background-color: #0056b3;
 }
 
-.product-list {
-  display: grid;
-  flex-wrap: wrap;
-  justify-content: center;
-  grid-template-columns: repeat(3, 2fr);
-}
-
-.product {
-  width: 120px;
-  margin: 12px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.product p {
-  margin: 5px 0;
-}
-
-.product-name {
-  font-weight: bold;
-}
-
-.product-price {
-  color: #ccc;
-}
-
-.product-inventory {
-  color: #ccc;
-}
-
-/* Inventory.css */
-
-.add-product-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 24px;
-  cursor: pointer;
-}
-
+/* Add New Product Form */
 .add-product-form {
   position: fixed;
   top: 50%;
   left: 50%;
+  right: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: white;
+  width: 370px;
+  padding: 30px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-product-form h2 {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.add-product-form input[type="text"],
+.add-product-form input[type="number"],
+.add-product-form input[type="file"] {
+  width: 350px;
+  padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
 }
 
-.add-product-form input {
+.add-product-form input[type="text"]:focus,
+.add-product-form input[type="number"]:focus,
+.add-product-form input[type="file"]:focus {
+  border-color: #007bff;
+}
+
+.add-product-form label {
   display: block;
-  margin-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .add-product-form button {
-  display: block;
-  margin-top: 10px;
-}
-
-/* Inventory.css */
-
-.add-product-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #333333; /* Dark blue color complementary to theme */
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.add-product-form input,
-.add-product-form button {
-  width: 100%;
+  width: 370px; /* Set width for each button with a space of 5px between them */
+  margin: 5px;
   padding: 10px;
-  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
-}
-
-.add-product-form input[type="file"] {
+  font-size: 18px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.add-product-form button {
-  max-width: 200px;
+.add-product-form button:hover {
+  background-color: #0056b3;
 }
 
-.add-product-form .button-group {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+.add-product-form button.cancel {
+  background-color: red; /* Change the background color to red */
+  margin-top: 10px;
 }
 
-.add-product-form .button-group button {
-  width: 48%; /* Adjusted width to fit two buttons side by side */
+.add-product-form button.cancel:hover {
+  background-color: darkred; /* Change the hover background color to a darker shade of red if desired */
 }
 
-.add-product-form .button-group button:first-child {
-  background-color: #007bff; /* Blue colored background for Add Product button */
-  color: white;
+/* Add New Product Button */
+.add-product-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px; /* Set width and height to create a circle */
+  height: 50px;
+  border-radius: 50%; /* Make it a circle */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 999; /* Ensure it's above other elements */
 }
 
-.add-product-form .button-group button:last-child {
-  background-color: #dc3545 !important;
-  color: white;
-}
-
-.add-product-form .button-group button:hover {
-  opacity: 0.8;
+.add-product-button:hover {
+  background-color: #0056b3;
 }
