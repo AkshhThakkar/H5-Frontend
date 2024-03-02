@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Header from "./Components/Header";
-import Sidebar from "./Components/Sidebar";
+import Header from "./Header/Header";
+import Sidebar from "./Sidebar/Sidebar";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Categories from "./Components/Categories/Categories";
 import Customers from "./Components/Customers/Customers";
@@ -13,20 +13,13 @@ import Profile from "./Components/Profile/Profile";
 import Notifications from "./Components/Notifications/Notifications";
 import SignIn from "./Components/Login/SignIn";
 import ForgotPassword from "./Components/Login/ForgotPassword";
-import MaybeShowSidebar from "./Components/MaybeShowSidebar";
-import MaybeShowHeader from "./Components/MaybeShowHeader";
+import MaybeShowSidebar from "./Sidebar/MaybeShowSidebar";
+import MaybeShowHeader from "./Header/MaybeShowHeader";
 import SignUp from "./Components/Login/SignUp";
 import ResetPassword from "./Components/Login/ResetPassword";
 import NotFound from "./Components/NotFound/index";
 
 function App() {
-  const user = {
-    username: "john_doe",
-    email: "john@example.com",
-    gender: "male",
-    mobile: "1234567890",
-  };
-
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle);
@@ -55,7 +48,7 @@ function App() {
           <Route path="/sales" element={<Sales />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/reports" element={<Reports />} />
-          <Route path="/profile" element={<Profile user={user} />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/notifications" element={<Notifications />} />
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
