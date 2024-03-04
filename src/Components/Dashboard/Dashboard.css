@@ -1,4 +1,4 @@
-.main-container {
+/* .main-container {
   padding: 20px;
 }
 
@@ -54,4 +54,75 @@
   color: #fff;
   text-align: center;
   margin: 0;
+} */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Adjusted to start from the top */
+  height: 100vh;
+  background-color: #222;
+  padding-top: 20px; /* Added top padding */
+}
+
+.main-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; /* Add scrollbar only if content exceeds viewport */
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 24px; /* increased padding */
+  margin: 12px; /* increased margin */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: calc(200px * 1.2); /* increased width */
+  flex: 0 0 auto;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+  font-size: calc(36px * 1.2); /* increased font size */
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.card-content {
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin: 0;
+  font-size: calc(1.2rem * 1.2); /* increased font size */
+  color: #fff;
+}
+
+p {
+  margin: 0;
+  font-size: calc(1rem * 1.2); /* increased font size */
+  color: #fff;
 }

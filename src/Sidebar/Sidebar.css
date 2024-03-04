@@ -1,16 +1,15 @@
-sidebar-list-item {
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-    background-color 0.3s ease;
+.sidebar-list-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sidebar-list-item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  background-color: #f5f5f5;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: #f5f5f5; /* Change the background color on hover */
 }
 
-.sidebar-list-item > a {
-  transition: color 0.3s ease;
+.sidebar-list-item:hover > a {
+  color: #f5f5f5; /* Change the text color on hover */
 }
 
 .sidebar-list-item:hover > a {
@@ -31,4 +30,9 @@ sidebar-list-item {
 
 .close_icon {
   transition: color 0.3s ease;
+}
+
+.close_icon:hover {
+  color: red; /* Change the color on hover */
+  transform: rotate(90deg); /* Rotate the icon on hover */
 }

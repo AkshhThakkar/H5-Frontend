@@ -50,11 +50,14 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       component: BsPersonCircle,
     },
   ];
+
   const WrapperComp = ({ Component }) => <Component className="icon" />;
+
   return (
     <aside
       id="sidebar"
-      className={openSidebarToggle ? "sidebar-responsive" : ""}>
+      className={openSidebarToggle ? "sidebar-responsive" : ""}
+      style={{ backgroundColor: "#202020", color: "#ffffff" }}>
       <div className="sidebar-title">
         <div className="sidebar-brand">
           <BsSteam className="icon_header" size={40} /> Admin Panel
@@ -71,10 +74,11 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
             style={{
               textDecoration: "none",
               color: "#9e9ea4",
-              transition: "color 0.3s ease",
             }}
             key={data.id}>
-            <li className="sidebar-list-item">
+            <li
+              className="sidebar-list-item"
+              style={{ transition: "background-color 0.3s ease" }}>
               <WrapperComp Component={data.component} /> {data.title}
             </li>
           </Link>

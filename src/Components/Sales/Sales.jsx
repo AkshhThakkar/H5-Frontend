@@ -56,7 +56,6 @@ function Sales() {
   return (
     <div className="container-fluid bg-2 text-center">
       <h1>Sales Management</h1>
-      <br />
       <div className="row">
         <div className="col-sm-8">
           <table className="table table-bordered">
