@@ -118,17 +118,17 @@ const Login = () => {
     <Grid
       container
       alignItems="center"
-      style={{ height: "100vh", width: "100vw", backgroundColor: "#1d2634" }}>
+      style={{ height: "100vh", width: "100vw", backgroundColor: "#222" }}>
       <Paper style={paperStyle}>
         <Grid container direction="column" alignItems="center" spacing={2}>
-          <Avatar style={{ width: 80, height: 80 }}>
+          <Avatar style={{ width: 80, height: 80, marginBottom: "20px" }}>
             <img
               src={AvatarGIF}
               alt="avatar"
               style={{ width: "100%", height: "100%" }}
             />
           </Avatar>
-          <h2>Sign In</h2>
+          <h2 style={{ marginBottom: "20px", color: "#222" }}>Sign In</h2>
         </Grid>
         <Formik
           initialValues={initialValues}
@@ -216,7 +216,7 @@ const Login = () => {
             Forgot Password?
           </NavLink>
         </Typography>
-        <Typography>
+        <Typography style={{ color: "#000" }}>
           Do you have an account ?
           <NavLink
             to="/register"

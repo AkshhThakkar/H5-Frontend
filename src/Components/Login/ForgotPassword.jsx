@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 const ForgotPassword = () => {
   const paperStyle = {
     padding: 20,
-    height: "55vh",
+    height: "60vh",
     width: 300,
     margin: "0 auto",
     backgroundColor: "#fff",
@@ -68,7 +68,7 @@ const ForgotPassword = () => {
     <Grid
       container
       alignItems="center"
-      style={{ height: "100vh", width: "100vw", backgroundColor: "#1d2634" }}>
+      style={{ height: "100vh", width: "100vw", backgroundColor: "#222" }}>
       <Paper style={paperStyle}>
         <Grid container direction="column" alignItems="center" spacing={2}>
           <Avatar style={{ width: 100, height: 100 }}>
@@ -78,11 +78,13 @@ const ForgotPassword = () => {
               style={{ width: "100%", height: "100%" }}
             />
           </Avatar>
-          <Typography variant="h5" style={{ marginBottom: "10px" }}>
+          <Typography variant="h5" style={{ marginBottom: "20px" }}>
             Forgot Password
           </Typography>
         </Grid>
-        <p>We will send you a password recovery link to your email</p>
+        <p style={{ marginBottom: "20px", color: "#000" }}>
+          We will send you a password recovery link to your email
+        </p>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
