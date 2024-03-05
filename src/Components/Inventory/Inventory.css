@@ -37,22 +37,29 @@
 
 .product-name {
   margin: 5px 0;
-  margin-bottom: 70px;
   text-align: center;
-  font-weight: bold;
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
 }
 
 .product-price {
   margin: 5px 0;
-  margin-bottom: 50px;
   text-align: center;
-  font-weight: bold;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
 }
+
 .product-inventory {
   margin: 5px 0;
-  margin-bottom: 15px;
   text-align: center;
-  font-weight: bold;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
 }
 
 .pagination {
