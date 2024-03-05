@@ -35,10 +35,22 @@
   text-align: center;
 }
 
-.product-name,
-.product-price,
+.product-name {
+  margin: 5px 0;
+  margin-bottom: 70px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.product-price {
+  margin: 5px 0;
+  margin-bottom: 50px;
+  text-align: center;
+  font-weight: bold;
+}
 .product-inventory {
   margin: 5px 0;
+  margin-bottom: 15px;
   text-align: center;
   font-weight: bold;
 }
