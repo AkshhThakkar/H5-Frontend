@@ -12,9 +12,17 @@ function Inventory() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [inventory, setInventory] = useState("");
+  const [category, setCategory] = useState("");
   const [image, setImage] = useState(null);
   const [showAddProductForm, setShowAddProductForm] = useState(false); // State for toggling the add product form
   const [totalPages, setTotalPages] = useState(0); // State for total number of pages
+  const [categories, setCategories] = useState([
+    "Electronics",
+    "Clothing",
+    "Books",
+    "Sports",
+  ]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const productsPerPage = 3;
   const maxPageButtons = 3;
@@ -33,7 +41,6 @@ function Inventory() {
         "http://192.168.3.236:3000/api/products/getproducts"
       );
       setMyData(response.data.result);
-      console.log(response);
     } catch (error) {
       setError(error);
       console.error("Error fetching data:", error);
@@ -52,6 +59,7 @@ function Inventory() {
       formData.append("name", name);
       formData.append("price", price);
       formData.append("inventory", inventory);
+      formData.append("category", category);
       formData.append("image", image);
 
       await axios.post(
@@ -66,13 +74,12 @@ function Inventory() {
 
       await fetchData();
 
-      // Reset form fields after successful submission
       setName("");
       setPrice("");
       setInventory("");
+      setCategory("");
       setImage(null);
 
-      // Hide the add product form
       setShowAddProductForm(false);
     } catch (error) {
       console.error("Error adding product:", error);
@@ -80,18 +87,17 @@ function Inventory() {
   };
 
   const handleCancel = () => {
-    setShowAddProductForm(false); // Close the add product form
-    // Reset form fields if needed
+    setShowAddProductForm(false);
     setName("");
     setPrice("");
     setInventory("");
+    setCategory("");
     setImage(null);
   };
 
   const handlePagination = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
       setCurrentPage(pageNumber);
-      // Adjust page buttons when clicking arrow buttons
       const firstPage = Math.max(
         1,
         pageNumber - Math.floor(maxPageButtons / 2)
@@ -107,6 +113,11 @@ function Inventory() {
     }
   };
 
+  const handleCategorySelect = (selectedCategory) => {
+    setCategory(selectedCategory);
+    setIsDropdownOpen(false);
+  };
+
   const renderPageButtons = () => {
     return pagesToShow.map((page) => (
       <button
@@ -118,17 +129,31 @@ function Inventory() {
     ));
   };
 
+  const renderCategoriesDropdown = () => {
+    return (
+      <div className="dropdown-content">
+        {categories.map((cat) => (
+          <div
+            key={cat}
+            className="dropdown-item"
+            onClick={() => handleCategorySelect(cat)}>
+            {cat}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   const [pagesToShow, setPagesToShow] = useState(
     Array.from({ length: maxPageButtons }, (_, index) => index + 1)
   );
 
   if (isLoading) {
-    // Render the spinner if isLoading is true
     return <Spinner />;
   }
 
   if (error) {
-    return <div>Error fetching data: {error.message}</div>;
+    return <div>Error fetching data {error.message}</div>;
   }
 
   return (
@@ -187,13 +212,22 @@ function Inventory() {
               value={inventory}
               onChange={(e) => setInventory(e.target.value)}
             />
+            <div className="category-input">
+              <input
+                type="text"
+                placeholder="Category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                onFocus={() => setIsDropdownOpen(true)}
+              />
+              {isDropdownOpen && renderCategoriesDropdown()}
+            </div>
             <input type="file" accept="image/*" onChange={handleImageChange} />
             <div>
               <button onClick={handleAddProduct}>Add Product</button>
               <button onClick={handleCancel} className="cancel">
                 Cancel
-              </button>{" "}
-              {/* Cancel button */}
+              </button>
             </div>
           </div>
         </Draggable>
