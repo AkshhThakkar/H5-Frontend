@@ -33,6 +33,7 @@ function Inventory() {
         "http://192.168.3.236:3000/api/products/getproducts"
       );
       setMyData(response.data.result);
+      console.log(response);
     } catch (error) {
       setError(error);
       console.error("Error fetching data:", error);
