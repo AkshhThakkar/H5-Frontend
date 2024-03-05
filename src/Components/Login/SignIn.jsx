@@ -8,7 +8,6 @@ import {
   Button,
   Typography,
   Grid,
-  Snackbar,
 } from "@material-ui/core";
 import {
   RemoveRedEyeRounded,
@@ -39,16 +38,6 @@ const Login = () => {
     backgroundColor: "#f0f3f5",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
     borderRadius: "8px",
-  };
-
-  const snackbarStyle = {
-    backgroundColor: "#5f72f3",
-    color: "white",
-    textAlign: "center",
-    borderRadius: "12px",
-    width: "400px",
-    margin: "20vh auto", // Adjusted margin to position somewhat above the middle
-    padding: "20px",
   };
 
   const navigate = useNavigate();
@@ -113,6 +102,26 @@ const Login = () => {
     username: Yup.string().required("Required"),
     password: Yup.string().required("Required"),
   });
+
+  // Custom Snackbar component
+  const CustomSnackbar = ({ message }) => {
+    return (
+      <Paper
+        style={{
+          position: "fixed",
+          bottom: 20,
+          left: "50%",
+          transform: "translateX(-50%)",
+          padding: 10,
+          backgroundColor: "#5f72f3",
+          color: "white",
+          borderRadius: 8,
+          zIndex: 9999,
+        }}>
+        {message}
+      </Paper>
+    );
+  };
 
   return (
     <Grid
@@ -225,15 +234,7 @@ const Login = () => {
           </NavLink>
         </Typography>
       </Paper>
-      <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        open={snackbarOpen}
-        autoHideDuration={6000}
-        onClose={() => setSnackbarOpen(false)}>
-        <Paper elevation={3} style={snackbarStyle}>
-          {snackbarMessage}
-        </Paper>
-      </Snackbar>
+      {snackbarOpen && <CustomSnackbar message={snackbarMessage} />}
     </Grid>
   );
 };

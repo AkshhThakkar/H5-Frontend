@@ -106,11 +106,11 @@ const Dashboard = () => {
       path: "/reports",
     },
     {
-      id: "customers",
-      title: "CUSTOMERS",
+      id: "monthlyreports",
+      title: "MONTHLY-REPORT",
       value: 33,
       component: BsFillPeopleFill,
-      path: "/customers",
+      path: "/month-reports",
     },
   ];
 

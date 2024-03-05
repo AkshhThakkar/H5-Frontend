@@ -19,12 +19,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       title: "Dashboard",
       component: BsGrid1X2Fill,
     },
-    {
-      id: "customers",
-      route: "/customers",
-      title: "Customers",
-      component: BsPeopleFill,
-    },
+
     {
       id: "inventory",
       route: "/inventory",

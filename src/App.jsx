@@ -5,7 +5,6 @@ import Header from "./Header/Header";
 import Sidebar from "./Sidebar/Sidebar";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Categories from "./Components/Categories/Categories";
-import Customers from "./Components/Customers/Customers";
 import Sales from "./Components/Sales/Sales";
 import Inventory from "./Components/Inventory/Inventory";
 import Reports from "./Components/Reports/Reports";
@@ -44,7 +43,6 @@ function App() {
           <Route exact path="/reset" element={<ResetPassword />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/customers" element={<Customers />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/reports" element={<Reports />} />
