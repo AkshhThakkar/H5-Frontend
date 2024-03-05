@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Inventory.css";
 import Spinner from "./Spinner"; // Import the Spinner component
+import Draggable from "react-draggable"; // Import Draggable component
 
 function Inventory() {
   const [myData, setMyData] = useState([]);
@@ -164,35 +165,37 @@ function Inventory() {
         </button>
       </div>
       {showAddProductForm && (
-        <div className="add-product-form">
-          <h2>Add New Product</h2>
-          <input
-            type="text"
-            placeholder="Product Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Inventory"
-            value={inventory}
-            onChange={(e) => setInventory(e.target.value)}
-          />
-          <input type="file" accept="image/*" onChange={handleImageChange} />
-          <div>
-            <button onClick={handleAddProduct}>Add Product</button>
-            <button onClick={handleCancel} className="cancel">
-              Cancel
-            </button>{" "}
-            {/* Cancel button */}
+        <Draggable>
+          <div className="add-product-form">
+            <h2>Add New Product</h2>
+            <input
+              type="text"
+              placeholder="Product Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="number"
+              placeholder="Price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+            <input
+              type="number"
+              placeholder="Quantity"
+              value={inventory}
+              onChange={(e) => setInventory(e.target.value)}
+            />
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+            <div>
+              <button onClick={handleAddProduct}>Add Product</button>
+              <button onClick={handleCancel} className="cancel">
+                Cancel
+              </button>{" "}
+              {/* Cancel button */}
+            </div>
           </div>
-        </div>
+        </Draggable>
       )}
       <button
         className="add-product-button"
