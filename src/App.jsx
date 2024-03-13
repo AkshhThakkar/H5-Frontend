@@ -4,10 +4,10 @@ import "./App.css";
 import Header from "./Header/Header";
 import Sidebar from "./Sidebar/Sidebar";
 import Dashboard from "./Components/Dashboard/Dashboard";
-import Categories from "./Components/Categories/Categories";
 import Sales from "./Components/Sales/Sales";
+import Suppliers from "./Components/Supply/Suppliers";
 import Inventory from "./Components/Inventory/Inventory";
-import Reports from "./Components/Reports/Reports";
+import Bills from "./Components/Bills/Bills";
 import Profile from "./Components/Profile/Profile";
 import Notifications from "./Components/Notifications/Notifications";
 import SignIn from "./Components/Login/SignIn";
@@ -42,10 +42,10 @@ function App() {
           <Route exact path="/forgotpassword" element={<ForgotPassword />} />
           <Route exact path="/reset" element={<ResetPassword />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
-          <Route path="/categories" element={<Categories />} />
+          <Route path="/supply" element={<Suppliers />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/inventory" element={<Inventory />} />
-          <Route path="/reports" element={<Reports />} />
+          <Route path="/Bills" element={<Bills />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/notifications" element={<Notifications />} />
           {/* Catch-all route */}

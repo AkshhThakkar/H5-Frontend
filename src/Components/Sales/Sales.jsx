@@ -8,11 +8,13 @@ function Sales() {
   const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
   const [sum, setSum] = useState(0);
+  const [customerName, setCustomerName] = useState("");
+  const [customerNumber, setCustomerNumber] = useState("");
 
   function Calculation() {
     // Check if name has a value before adding
     if (name.trim() !== "") {
-      users.push({ name, qty, price, sum });
+      users.push({ customerName, customerNumber, name, qty, price, sum });
 
       const newTotal = users.reduce((total, user) => {
         return total + Number(user.sum);
@@ -25,6 +27,8 @@ function Sales() {
       setQty(0);
       setPrice(0);
       setSum(0);
+      setCustomerName(""); // Reset customer name after adding
+      setCustomerNumber(""); // Reset customer number after adding
     }
   }
 
@@ -61,6 +65,8 @@ function Sales() {
           <table className="table table-bordered">
             <thead>
               <tr>
+                <th>Customer Name</th>
+                <th>Customer Number</th>
                 <th>Product Name</th>
                 <th>Price</th>
                 <th>Qty</th>
@@ -70,6 +76,30 @@ function Sales() {
             </thead>
             <tbody>
               <tr>
+                <td>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Customer Name"
+                    style={{ color: "black" }}
+                    value={customerName}
+                    onChange={(event) => {
+                      setCustomerName(event.target.value);
+                    }}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Customer Number"
+                    style={{ color: "black" }}
+                    value={customerNumber}
+                    onChange={(event) => {
+                      setCustomerNumber(event.target.value);
+                    }}
+                  />
+                </td>
                 <td>
                   <input
                     type="text"
@@ -125,10 +155,12 @@ function Sales() {
               </tr>
             </tbody>
           </table>
-          <h3 align="left"> Products </h3>
+          <h3 align="left"> Details </h3>
           <table className="table table-bordered">
             <thead>
               <tr>
+                {/* <th>Customer Name</th>
+                <th>Customer Number</th> */}
                 <th>Item Name</th>
                 <th>Price</th>
                 <th>Qty</th>
@@ -138,6 +170,8 @@ function Sales() {
             <tbody>
               {users.map((row, index) => (
                 <tr key={index}>
+                  {/* <td style={{ color: "white" }}>{row.customerName}</td>
+                  <td style={{ color: "white" }}>{row.customerNumber}</td> */}
                   <td style={{ color: "white" }}>{row.name}</td>
                   <td style={{ color: "white" }}>{row.price}</td>
                   <td style={{ color: "white" }}>{row.qty}</td>

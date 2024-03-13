@@ -1,5 +1,11 @@
+/* Sidebar styles */
 .sidebar-list-item {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar-responsive {
+  width: 250px; /* Adjust the width as needed */
+  transition: all 0.3s ease;
 }
 
 .sidebar-list-item:hover {
@@ -8,31 +14,31 @@
   background-color: #f5f5f5; /* Change the background color on hover */
 }
 
-.sidebar-list-item:hover > a {
-  color: #f5f5f5; /* Change the text color on hover */
+.sidebar-list-item > a {
+  transition: filter 0.3s ease; /* Add transition for text color */
 }
 
 .sidebar-list-item:hover > a {
-  color: #6b6b77;
+  filter: brightness(85%); /* Darken the text color on hover */
 }
 
 .icon {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease; /* Added color transition */
 }
 
 .sidebar-list-item:hover .icon {
   transform: scale(1.1);
 }
 
-.sidebar-list-item:hover {
-  color: #000;
+.sidebar-list-item:hover .icon path {
+  fill: #222; /* Change the icon color on hover to a shade darker */
 }
 
-.close_icon {
-  transition: color 0.3s ease;
-}
-
-.close_icon:hover {
-  color: red; /* Change the color on hover */
-  transform: rotate(90deg); /* Rotate the icon on hover */
+.close-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 24px;
+  margin-left: 60px; /* Adjust the spacing between Admin Panel text and the button */
 }

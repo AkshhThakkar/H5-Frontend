@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
   BsCalendar,
   BsFillArchiveFill,
-  BsFillGrid3X3GapFill,
+  BsPeopleFill,
   BsReceipt,
 } from "react-icons/bs";
 
@@ -12,11 +12,11 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const productData = [
     {
-      id: "categories",
-      title: "CATEGORIES",
+      id: "suppliers",
+      title: "SUPPLIERS",
       value: 12,
-      component: BsFillGrid3X3GapFill,
-      path: "/categories",
+      component: BsPeopleFill,
+      path: "/supply",
     },
     {
       id: "inventory",
@@ -26,18 +26,18 @@ const Dashboard = () => {
       path: "/inventory",
     },
     {
-      id: "reports",
-      title: "REPORTS",
+      id: "bills",
+      title: "BILLS",
       value: 42,
       component: BsReceipt,
-      path: "/reports",
+      path: "/bills",
     },
     {
-      id: "monthlyreports",
-      title: "MONTHLY-REPORT",
+      id: "reports",
+      title: "REPORTS",
       value: 33,
       component: BsCalendar,
-      path: "/month-reports",
+      path: "/reports",
     },
   ];
 

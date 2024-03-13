@@ -40,7 +40,7 @@
   color: #555;
   padding: 8px 40px 8px 40px; /* Adjust padding */
   border-radius: 25px;
-  width: 150px;
+  width: 100px;
   transition: width 0.4s ease;
   outline: none;
 }

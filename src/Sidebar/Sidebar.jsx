@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import {
   BsCart3,
   BsGrid1X2Fill,
-  BsPeopleFill,
+  BsSteam,
   BsListCheck,
   BsReceipt,
-  BsSteam,
   BsPersonCircle,
 } from "react-icons/bs";
+import { RiCloseFill } from "react-icons/ri"; // Importing RiCloseFill icon from react-icons/ri
 
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
   const sidebarMenu = [
@@ -19,7 +19,6 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       title: "Dashboard",
       component: BsGrid1X2Fill,
     },
-
     {
       id: "inventory",
       route: "/inventory",
@@ -33,9 +32,9 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       component: BsListCheck,
     },
     {
-      id: "reports",
-      route: "/reports",
-      title: "Reports",
+      id: "bills",
+      route: "/bills",
+      title: "Bills",
       component: BsReceipt,
     },
     {
@@ -56,10 +55,13 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       <div className="sidebar-title">
         <div className="sidebar-brand">
           <BsSteam className="icon_header" size={40} /> Admin Panel
+          {/* Conditionally render the close button if sidebar is open */}
+          {openSidebarToggle && (
+            <button className="close-button" onClick={OpenSidebar}>
+              <RiCloseFill />
+            </button>
+          )}
         </div>
-        <span className="icon close_icon" onClick={OpenSidebar}>
-          X
-        </span>
       </div>
 
       <ul className="sidebar-list">

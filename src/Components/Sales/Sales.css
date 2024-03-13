@@ -12,13 +12,16 @@ body {
 }
 
 .container-fluid {
-  padding: 20px;
-  background-color: #222 !important; /* Updated background color */
+  max-width: 1200px; /* Set maximum width */
+  margin: 0 auto; /* Center container horizontally */
+  padding: 30px;
+  background-color: #222; /* Updated background color */
 }
 
 .bg-2 {
   background-color: #263043; /* White background */
-  border-radius: 10px;
+  border-radius: 20px;
+  padding: 30px;
 }
 
 .text-center {
@@ -28,69 +31,82 @@ body {
 /* Table styles */
 .table {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .table th,
 .table td {
-  padding: 10px;
+  padding: 15px;
   text-align: center;
   color: #0b0808;
   border: 1px solid #ddd;
 }
 
 .table th {
-  width: 100%;
+  width: auto; /* Adjust width */
   margin-bottom: 20px;
   border-collapse: collapse;
   background-color: #f2f2f2; /* Light gray background for table header */
 }
 
 /* Form input styles */
-.form-control {
-  width: auto;
-  padding: auto;
+.form-control,
+.customer-name,
+.customer-number {
+  width: 100%; /* Adjust width */
+  padding: 15px;
   height: auto;
   border: 1px solid #ccc; /* Light gray border */
-  border-radius: 5px;
+  border-radius: 8px;
   box-sizing: border-box;
+  color: #ffffff; /* Dark text color */
+  margin-bottom: 30px;
 }
 
 /* Button styles */
 .btn {
-  padding: 10px 20px;
+  padding: 15px 30px; /* Adjust padding */
   background-color: #4caf50; /* Green background */
   color: #0b0808; /* White text */
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
 .btn:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #45a049;
 }
 
 .btn-success {
-  background-color: #5cb85c; /* Alternate shade of green for success */
+  background-color: #5cb85c;
 }
 
 .btn-success:hover {
-  background-color: #4cae4c; /* Darker shade of green on hover */
+  background-color: #4cae4c;
 }
 
-/* Heading styles */
 h1 {
-  font-size: 32px;
-  color: #ffffff; /* Dark text color */
-  margin-bottom: 20px;
+  font-size: 36px;
+  color: #ffffff;
+  margin-bottom: 30px;
 }
 
 h3 {
-  font-size: 24px;
-  color: #ffffff; /* Dark text color */
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #ffffff;
 }
 
-/* Placeholder styles */
-.form-control::placeholder {
-  color: #ffffff; /* Light gray placeholder color */
+.form-control::placeholder,
+.customer-name::placeholder,
+.customer-number::placeholder {
+  color: #ffffff;
+}
+
+.details-container {
+  margin-bottom: 30px;
+}
+
+.customer-products-container {
+  margin-top: 30px;
 }

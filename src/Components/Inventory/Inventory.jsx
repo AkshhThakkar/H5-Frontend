@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./Inventory.css";
 import Spinner from "./Spinner"; // Import the Spinner component
 import Draggable from "react-draggable"; // Import Draggable component
+import { FiFilter } from "react-icons/fi"; // Import Filter icon from react-icons/fi
 
 function Inventory() {
   const [myData, setMyData] = useState([]);
@@ -23,8 +24,10 @@ function Inventory() {
     "Sports",
   ]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isAddingProduct, setIsAddingProduct] = useState(false); // State for add product loading
+  const draggableRef = useRef(null); // Ref for Draggable component
 
-  const productsPerPage = 3;
+  const productsPerPage = 4;
   const maxPageButtons = 3;
 
   useEffect(() => {
@@ -40,7 +43,12 @@ function Inventory() {
       const response = await axios.get(
         "http://192.168.3.236:3000/api/products/getproducts"
       );
-      setMyData(response.data.result);
+      setMyData(
+        response.data.result.map((product) => ({
+          ...product,
+          base64Image: `data:${product.image.contentType};base64,${product.image.data}`,
+        }))
+      );
     } catch (error) {
       setError(error);
       console.error("Error fetching data:", error);
@@ -55,6 +63,7 @@ function Inventory() {
 
   const handleAddProduct = async () => {
     try {
+      setIsAddingProduct(true); // Set loading state to true
       const formData = new FormData();
       formData.append("name", name);
       formData.append("price", price);
@@ -83,6 +92,8 @@ function Inventory() {
       setShowAddProductForm(false);
     } catch (error) {
       console.error("Error adding product:", error);
+    } finally {
+      setIsAddingProduct(false); // Set loading state back to false
     }
   };
 
@@ -131,22 +142,27 @@ function Inventory() {
 
   const renderCategoriesDropdown = () => {
     return (
-      <div className="dropdown-content">
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        className="category-select">
+        <option value="">Select Category</option>
         {categories.map((cat) => (
-          <div
-            key={cat}
-            className="dropdown-item"
-            onClick={() => handleCategorySelect(cat)}>
+          <option key={cat} value={cat}>
             {cat}
-          </div>
+          </option>
         ))}
-      </div>
+      </select>
     );
   };
 
   const [pagesToShow, setPagesToShow] = useState(
     Array.from({ length: maxPageButtons }, (_, index) => index + 1)
   );
+
+  const filteredData = category
+    ? myData.filter((product) => product.category === category)
+    : myData;
 
   if (isLoading) {
     return <Spinner />;
@@ -158,8 +174,14 @@ function Inventory() {
 
   return (
     <div>
+      <div className="filter-box">
+        <div className="filter-icon">
+          <FiFilter />
+        </div>
+        <div className="category-dropdown">{renderCategoriesDropdown()}</div>
+      </div>
       <div className="product-list">
-        {myData
+        {filteredData
           .slice(
             (currentPage - 1) * productsPerPage,
             currentPage * productsPerPage
@@ -168,7 +190,7 @@ function Inventory() {
             <div className="product" key={index}>
               <img
                 className="image"
-                src={product.imageurl}
+                src={product.base64Image}
                 alt={product.name}
               />
               <p className="product-name">{product.name}</p>
@@ -191,8 +213,8 @@ function Inventory() {
         </button>
       </div>
       {showAddProductForm && (
-        <Draggable>
-          <div className="add-product-form">
+        <Draggable nodeRef={draggableRef}>
+          <div className="add-product-form" ref={draggableRef}>
             <h2>Add New Product</h2>
             <input
               type="text"
@@ -212,19 +234,12 @@ function Inventory() {
               value={inventory}
               onChange={(e) => setInventory(e.target.value)}
             />
-            <div className="category-input">
-              <input
-                type="text"
-                placeholder="Category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                onFocus={() => setIsDropdownOpen(true)}
-              />
-              {isDropdownOpen && renderCategoriesDropdown()}
-            </div>
+            <div className="category-input">{renderCategoriesDropdown()}</div>
             <input type="file" accept="image/*" onChange={handleImageChange} />
             <div>
-              <button onClick={handleAddProduct}>Add Product</button>
+              <button onClick={handleAddProduct} disabled={isAddingProduct}>
+                {isAddingProduct ? "Adding..." : "Add Product"}
+              </button>
               <button onClick={handleCancel} className="cancel">
                 Cancel
               </button>
