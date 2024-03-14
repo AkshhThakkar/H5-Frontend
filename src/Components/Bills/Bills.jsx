@@ -60,7 +60,7 @@ const Bills = () => {
                     Customer Name: {bill.customer}
                   </p>
                   <p style={{ fontSize: "1.1em" }}>
-                    Customer Email: {bill.customeremail}
+                    Customer Email: {bill.customermail}
                   </p>{" "}
                   {/* Corrected property name */}
                 </div>

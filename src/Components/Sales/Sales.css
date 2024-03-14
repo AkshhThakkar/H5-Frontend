@@ -1,112 +1,38 @@
-/* Reset default margin and padding */
-body,
-h1,
-h3 {
-  margin: 0;
-  padding: 0;
+sales.css .container-fluid {
+  padding: 20px;
 }
 
-/* Base styles */
-body {
-  font-family: Arial, sans-serif;
-}
-
-.container-fluid {
-  max-width: 1200px; /* Set maximum width */
-  margin: 0 auto; /* Center container horizontally */
-  padding: 30px;
-  background-color: #222; /* Updated background color */
-}
-
-.bg-2 {
-  background-color: #263043; /* White background */
-  border-radius: 20px;
-  padding: 30px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-/* Table styles */
 .table {
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  border-collapse: collapse;
 }
 
 .table th,
 .table td {
-  padding: 15px;
-  text-align: center;
-  color: #0b0808;
-  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 .table th {
-  width: auto; /* Adjust width */
-  margin-bottom: 20px;
-  border-collapse: collapse;
-  background-color: #f2f2f2; /* Light gray background for table header */
-}
-
-/* Form input styles */
-.form-control,
-.customer-name,
-.customer-number {
-  width: 100%; /* Adjust width */
-  padding: 15px;
-  height: auto;
-  border: 1px solid #ccc; /* Light gray border */
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #ffffff; /* Dark text color */
-  margin-bottom: 30px;
-}
-
-/* Button styles */
-.btn {
-  padding: 15px 30px; /* Adjust padding */
-  background-color: #4caf50; /* Green background */
-  color: #0b0808; /* White text */
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #45a049;
+  background-color: #f2f2f2;
 }
 
 .btn-success {
-  background-color: #5cb85c;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.btn-success:hover {
-  background-color: #4cae4c;
-}
-
-h1 {
-  font-size: 36px;
-  color: #ffffff;
-  margin-bottom: 30px;
-}
-
-h3 {
-  font-size: 28px;
-  margin-bottom: 30px;
-  color: #ffffff;
-}
-
-.form-control::placeholder,
-.customer-name::placeholder,
-.customer-number::placeholder {
-  color: #ffffff;
-}
-
-.details-container {
-  margin-bottom: 30px;
-}
-
-.customer-products-container {
-  margin-top: 30px;
+.col-sm-4 {
+  padding-left: 20px;
 }

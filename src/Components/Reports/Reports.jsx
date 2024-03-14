@@ -50,7 +50,7 @@ const Reports = () => {
           </h2>
           <ul>
             <li>Total Sales: {monthlyReport.totalSales}</li>
-            <li>Total Profit: {monthlyReport.totalProfit}</li>
+            <li>Total Profit: {monthlyReport.profit}</li>
             {/* Add more report data as needed */}
           </ul>
           {decodedImage && <img src={decodedImage} alt="Monthly Sales Chart" />}

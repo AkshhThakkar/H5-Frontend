@@ -30,7 +30,6 @@ function App() {
   return (
     <div className="grid-container">
       <BrowserRouter>
-        <Header setSearchQuery={setSearchQuery} />
         <MaybeShowSidebar>
           <Sidebar
             openSidebarToggle={openSidebarToggle}
