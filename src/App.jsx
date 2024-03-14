@@ -25,9 +25,12 @@ function App() {
     setOpenSidebarToggle(!openSidebarToggle);
   };
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <div className="grid-container">
       <BrowserRouter>
+        <Header setSearchQuery={setSearchQuery} />
         <MaybeShowSidebar>
           <Sidebar
             openSidebarToggle={openSidebarToggle}

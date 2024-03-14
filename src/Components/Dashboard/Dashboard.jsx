@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
 import {
@@ -7,9 +7,42 @@ import {
   BsPeopleFill,
   BsReceipt,
 } from "react-icons/bs";
+import axios from "axios";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [inventoryCount, setInventoryCount] = useState(0);
+  const [billCount, setBillCount] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true); // Start loading animation
+        const inventoryResponse = await axios.get(
+          "http://192.168.3.236:3000/api/products/getproducts"
+        );
+        const inventoryData = inventoryResponse.data.result;
+        const totalProductsInInventory = inventoryData.length;
+        setInventoryCount(totalProductsInInventory);
+
+        const billResponse = await axios.get(
+          "http://192.168.3.236:3000/api/sales/show"
+        );
+        const billData = billResponse.data.result;
+        const numberOfBills = billData.length;
+        setBillCount(numberOfBills);
+
+        setLoading(false); // Stop loading animation
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false); // Stop loading animation on error
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const productData = [
     {
       id: "suppliers",
@@ -21,14 +54,14 @@ const Dashboard = () => {
     {
       id: "inventory",
       title: "INVENTORY",
-      value: 300,
+      value: inventoryCount,
       component: BsFillArchiveFill,
       path: "/inventory",
     },
     {
       id: "bills",
       title: "BILLS",
-      value: 42,
+      value: billCount,
       component: BsReceipt,
       path: "/bills",
     },
@@ -66,6 +99,7 @@ const Dashboard = () => {
           </div>
         ))}
       </div>
+      {loading && <div className="spinner" />}
     </main>
   );
 };

@@ -1,4 +1,3 @@
-// Profile.jsx
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../Redux/UsersSlice";
@@ -18,6 +17,7 @@ const Profile = () => {
   const user = useSelector(selectUser);
   const [isEditing, setIsEditing] = useState(false);
   const [editedUser, setEditedUser] = useState(user);
+  const [profilePhotoFile, setProfilePhotoFile] = useState(null);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -25,12 +25,17 @@ const Profile = () => {
   };
 
   const handleSave = () => {
-    // Implement logic to save editedUser
     setIsEditing(false);
   };
 
   const handleChange = (e) => {
     setEditedUser({ ...editedUser, [e.target.name]: e.target.value });
+  };
+
+  const handleProfilePhotoChange = (e) => {
+    const file = e.target.files[0];
+    setProfilePhotoFile(file);
+    setEditedUser({ ...editedUser, profilePhoto: URL.createObjectURL(file) });
   };
 
   return (
@@ -73,12 +78,19 @@ const Profile = () => {
                     Edit
                   </Button>
                 ) : (
-                  <Button
-                    variant="contained"
-                    onClick={handleSave}
-                    className="save-button">
-                    Save
-                  </Button>
+                  <div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleProfilePhotoChange}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={handleSave}
+                      className="save-button">
+                      Save
+                    </Button>
+                  </div>
                 )}
               </Grid>
             </Grid>

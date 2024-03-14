@@ -1,3 +1,25 @@
+/* Dashboard.css */
+
+/* Add styles for the loading animation */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  margin-top: 20px;
+  animation: spin 1s linear infinite; /* Apply animation to create circular motion */
+  color: #fff; /* Set color for the loading text */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg); /* Start rotation from 0 degrees */
+  }
+  to {
+    transform: rotate(360deg); /* End rotation at 360 degrees (full circle) */
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -24,7 +46,6 @@ body {
   justify-content: center;
   max-width: 800px;
   width: 100%;
-  /* padding: 10px; */
   box-sizing: border-box;
   overflow-y: auto; /* Add scrollbar only if content exceeds viewport */
 }
@@ -32,13 +53,13 @@ body {
 .card {
   background-color: #fff;
   border-radius: 10px;
-  padding: 24px; /* increased padding */
-  margin: 12px; /* increased margin */
+  padding: 24px;
+  margin: 12px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.3s ease;
-  width: calc(200px * 1.2); /* increased width */
+  width: calc(200px * 1.2);
   flex: 0 0 auto;
 }
 
@@ -48,7 +69,7 @@ body {
 }
 
 .card-icon {
-  font-size: calc(36px * 1.2); /* increased font size */
+  font-size: calc(36px * 1.2);
   margin-bottom: 10px;
   color: #fff;
 }
@@ -59,12 +80,12 @@ body {
 
 h2 {
   margin: 0;
-  font-size: calc(1.2rem * 1.2); /* increased font size */
+  font-size: calc(1.2rem * 1.2);
   color: #fff;
 }
 
 p {
   margin: 0;
-  font-size: calc(1rem * 1.2); /* increased font size */
+  font-size: calc(1rem * 1.2);
   color: #fff;
 }
