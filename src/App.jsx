@@ -6,6 +6,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Sales from "./Components/Sales/Sales";
 import Suppliers from "./Components/Supply/Suppliers";
+import Reports from "./Components/Reports/Reports";
 import Inventory from "./Components/Inventory/Inventory";
 import Bills from "./Components/Bills/Bills";
 import Profile from "./Components/Profile/Profile";
@@ -43,12 +44,13 @@ function App() {
           <Route exact path="/reset" element={<ResetPassword />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/supply" element={<Suppliers />} />
+          <Route path="/reports" element={<Reports />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/Bills" element={<Bills />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/notifications" element={<Notifications />} />
-          {/* Catch-all route */}
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

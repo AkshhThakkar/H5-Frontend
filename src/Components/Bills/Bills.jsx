@@ -6,7 +6,7 @@ const Bills = () => {
   const [bills, setBills] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const billsPerPage = 3;
+  const billsPerPage = 4;
 
   useEffect(() => {
     const fetchBills = async () => {
@@ -55,21 +55,32 @@ const Bills = () => {
             <div key={index} className={`bill-container ${bill.status}`}>
               {bill.customer && (
                 <div>
-                  <h3>Customer Name: {bill.customer}</h3>
-                  <p>Customer Email: {bill.customerMail}</p>{" "}
+                  <h4 style={{ fontSize: "1.2em" }}>Customer Details:</h4>
+                  <p style={{ fontSize: "1.1em" }}>
+                    Customer Name: {bill.customer}
+                  </p>
+                  <p style={{ fontSize: "1.1em" }}>
+                    Customer Email: {bill.customerMail}
+                  </p>{" "}
                   {/* Corrected property name */}
                 </div>
               )}
-              <p>Date: {bill.date}</p>
+              <p style={{ fontSize: "1.1em" }}>Date: {bill.date}</p>
               {bill.product ? (
                 <div>
-                  <h4>Product Details:</h4>
-                  <p>Name: {bill.product.name}</p>
-                  <p>Price: ₹{bill.product.price}</p>
-                  <p>Quantity: {bill.quantity}</p>
+                  <h4 style={{ fontSize: "1.2em" }}>Product Details:</h4>
+                  <p style={{ fontSize: "0.95em" }}>
+                    Name: {bill.product.name}
+                  </p>
+                  <p style={{ fontSize: "1.1em" }}>
+                    Price: ₹{bill.product.price}
+                  </p>
+                  <p style={{ fontSize: "1.1em" }}>Quantity: {bill.quantity}</p>
                 </div>
               ) : (
-                <p>No product details available</p>
+                <p style={{ fontSize: "1.1em" }}>
+                  No product details available
+                </p>
               )}
             </div>
           ))
@@ -77,15 +88,46 @@ const Bills = () => {
           <div>No bills available.</div>
         )}
       </div>
-      <div className="pagination">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          position: "fixed",
+          marginBottom: "50px",
+          marginLeft: "100px",
+          bottom: 20,
+          left: 0,
+          right: 0,
+        }}>
         <button
+          style={{
+            marginRight: 10,
+            padding: "10px 15px",
+            backgroundColor: "#007bff",
+            color: "#fff",
+            border: "none",
+            cursor: "pointer",
+            borderRadius: 7,
+            transition: "background-color 0.3s ease",
+          }}
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}>
           Previous
         </button>
         <button
+          style={{
+            padding: "10px 15px",
+            backgroundColor: "#007bff",
+            color: "#fff",
+            border: "none",
+            cursor: "pointer",
+            borderRadius: 7,
+            transition: "background-color 0.3s ease",
+          }}
           onClick={() => paginate(currentPage + 1)}
-          disabled={indexOfLastBill >= bills.length}>
+          disabled={
+            indexOfLastBill >= bills.length || currentBills.length === 0
+          }>
           Next
         </button>
       </div>

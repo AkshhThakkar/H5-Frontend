@@ -55,11 +55,19 @@
   text-align: center;
 }
 
-/* Style product name, price, and inventory */
-.product-name,
+.product-name {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 7px;
+}
+
 .product-price,
 .product-inventory {
-  margin: 3px 0; /* Reduced margin */
+  position: absolute;
+  bottom: 7px; /* 7px difference from bottom */
+  left: 10px; /* Adjust as needed */
+  font-size: 12px; /* Smaller font size */
+  color: #888;
 }
 
 .product-name {
@@ -67,76 +75,34 @@
   font-size: 16px; /* Smaller font size */
 }
 
-.product-price,
+.product-price {
+  margin-bottom: 28px;
+  font-size: 18px; /* Smaller font size */
+  color: #888;
+}
 .product-inventory {
-  font-size: 12px; /* Smaller font size */
+  margin-bottom: 5px;
+  font-size: 18px; /* Smaller font size */
   color: #888;
 }
 
 /* Style the pagination buttons */
 .pagination {
+  margin-left: 65px;
   margin-top: 15px; /* Reduced margin */
   text-align: center;
+  position: fixed;
+  bottom: 20px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .pagination button {
-  width: 30px; /* Smaller width */
   height: 30px; /* Smaller height */
   margin: 0 3px; /* Reduced margin */
-  font-size: 14px; /* Smaller font size */
-}
-
-/* Style the add product form */
-.add-product-form {
-  position: fixed;
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 320px; /* Smaller width */
-  padding: 20px; /* Reduced padding */
-  background-color: #f5f5f5;
-  border-radius: 16px; /* Smaller border radius */
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2); /* Reduced shadow */
-}
-
-.add-product-form h2 {
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 15px; /* Reduced margin */
   font-size: 18px; /* Smaller font size */
-  color: #333;
 }
 
-.add-product-form input[type="text"],
-.add-product-form input[type="number"],
-.add-product-form input[type="file"] {
-  width: 100%;
-  padding: 8px; /* Reduced padding */
-  margin-bottom: 15px; /* Reduced margin */
-  border: 1px solid #ccc;
-  border-radius: 4px; /* Smaller border radius */
-  font-size: 14px; /* Smaller font size */
-}
-
-.add-product-form button {
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 16px; /* Smaller font size */
-}
-
-/* Style the add product button */
-.add-product-button {
-  width: 40px; /* Smaller width */
-  height: 40px; /* Smaller height */
-  border-radius: 50%;
-  font-size: 20px; /* Smaller font size */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
-  z-index: 999;
-  position: fixed;
-  bottom: 15px; /* Reduced bottom */
-  right: 15px; /* Reduced right */
-}
 /* Style the add product form */
 .add-product-form {
   position: fixed;

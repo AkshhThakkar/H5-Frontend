@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const UsersSlice = createSlice({
+export const UsersSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
@@ -8,16 +8,25 @@ const UsersSlice = createSlice({
   },
   reducers: {
     login: (state, action) => {
-      console.log(action);
       state.user = action.payload.user;
       state.token = action.payload.token;
     },
     logout: (state) => {
       state.user = null;
+      state.token = null;
+    },
+    updateUser: (state, action) => {
+      state.user = { ...state.user, ...action.payload };
+    },
+    fetchUser: (state, action) => {
+      // Assuming the action payload contains user data
+      state.user = action.payload;
     },
   },
 });
 
-export const { login, logout } = UsersSlice.actions;
-export const selectuser = (state) => state.user.user;
+export const { login, logout, updateUser, fetchUser } = UsersSlice.actions;
+
+export const selectUser = (state) => state.user.user;
+
 export default UsersSlice.reducer;

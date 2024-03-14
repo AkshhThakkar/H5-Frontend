@@ -35,7 +35,7 @@
 .timestamp {
   margin-right: 15px;
   font-size: 14px;
-  color: #ccc;
+  color: #fff;
 }
 
 .message {
@@ -67,6 +67,7 @@
 .red-inventory {
   color: #fff;
 }
+
 .clear-notifications {
   margin-top: 20px;
   text-align: center;
@@ -92,4 +93,13 @@
 
 .clear-button:focus {
   outline: none;
+}
+
+.view-button {
+  padding: 7px 14px; /* Increase padding for larger size */
+  font-size: 15px; /* Adjust font size as needed */
+  margin-left: 360px; /* Adjust margin as needed */
+  border-radius: 7px;
+  background-color: #007bff;
+  color: #fff;
 }
