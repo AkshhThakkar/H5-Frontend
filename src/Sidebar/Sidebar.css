@@ -40,5 +40,10 @@
   cursor: pointer;
   color: #ffffff;
   font-size: 24px;
-  margin-left: 60px; /* Adjust the spacing between Admin Panel text and the button */
+  margin-top: 17px; /* Adjust the margin top as needed */
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
 }

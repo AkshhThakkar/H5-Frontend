@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./reports.css"; // Import the CSS file
 
 const Reports = () => {
   const [monthlyReport, setMonthlyReport] = useState(null);
@@ -29,10 +30,10 @@ const Reports = () => {
             const binary = new Uint8Array(buffer).reduce((data, byte) => {
               return data + String.fromCharCode(byte);
             }, "");
-            return btoa(binary);
+            return `data:image/png;base64,${btoa(binary)}`;
           });
 
-        setDecodedImage(`data:image/png;base64,${base64Image}`);
+        setDecodedImage(base64Image);
       } catch (error) {
         console.error("Error fetching monthly report:", error);
       }
@@ -42,18 +43,21 @@ const Reports = () => {
   }, []);
 
   return (
-    <div>
+    <div className="reports-container">
       {monthlyReport && (
         <div>
-          <h2>
-            Monthly Report ({monthlyReport.month}-{monthlyReport.year})
-          </h2>
-          <ul>
+          <h2 className="reports-header">Monthly Report 3-2024</h2>
+          <ul className="reports-list">
             <li>Total Sales: {monthlyReport.totalSales}</li>
             <li>Total Profit: {monthlyReport.profit}</li>
-            {/* Add more report data as needed */}
           </ul>
-          {decodedImage && <img src={decodedImage} alt="Monthly Sales Chart" />}
+          {decodedImage && (
+            <img
+              src={decodedImage}
+              alt="Monthly Sales Chart"
+              className="reports-image"
+            />
+          )}
         </div>
       )}
     </div>

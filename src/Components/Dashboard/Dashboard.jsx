@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
 import {
+  BsBox2Fill,
   BsCalendar,
   BsFillArchiveFill,
   BsPeopleFill,
@@ -33,10 +34,10 @@ const Dashboard = () => {
         const numberOfBills = billData.length;
         setBillCount(numberOfBills);
 
-        setLoading(false); // Stop loading animation
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
-        setLoading(false); // Stop loading animation on error
+        setLoading(false);
       }
     };
 
@@ -45,10 +46,10 @@ const Dashboard = () => {
 
   const productData = [
     {
-      id: "suppliers",
-      title: "SUPPLIERS",
+      id: "supply",
+      title: "SUPPLY",
       value: 12,
-      component: BsPeopleFill,
+      component: BsBox2Fill,
       path: "/supply",
     },
     {

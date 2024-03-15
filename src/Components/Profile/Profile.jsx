@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../Redux/UsersSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser, selectUserId } from "../../Redux/UsersSlice";
+
 import {
   Typography,
   Button,
@@ -15,6 +16,8 @@ import "./Profile.css";
 
 const Profile = () => {
   const user = useSelector(selectUser);
+  const userId = useSelector(selectUserId); // Fetch userId (_id) from Redux store
+  const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [editedUser, setEditedUser] = useState(user);
   const [profilePhotoFile, setProfilePhotoFile] = useState(null);
@@ -24,8 +27,39 @@ const Profile = () => {
     setEditedUser(user);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     setIsEditing(false);
+
+    try {
+      const formData = new FormData();
+      formData.append("userId", userId);
+      formData.append("username", editedUser.username);
+      formData.append("email", editedUser.email);
+      formData.append("mobile", editedUser.mobile);
+      formData.append("gender", editedUser.gender);
+      if (profilePhotoFile) {
+        formData.append("profilePhoto", profilePhotoFile);
+      }
+
+      console.log("Data being sent to the backend:", formData);
+
+      const response = await fetch(
+        "http://192.168.3.236:3000/api/users/profile",
+        {
+          method: "PUT",
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update user.");
+      }
+
+      // Handle success, maybe show a success message
+    } catch (error) {
+      console.error("Error updating user:", error.message);
+      // Handle error, maybe show an error message to the user
+    }
   };
 
   const handleChange = (e) => {
@@ -49,7 +83,7 @@ const Profile = () => {
             <Grid item>
               <Avatar
                 alt="Profile"
-                src={editedUser.profilePhoto || "/default-profile-photo.png"}
+                src={`data:image/png;base64,${editedUser.profilePhoto}`}
                 sx={{ width: 100, height: 100 }}
                 className="avatar"
               />
@@ -68,30 +102,6 @@ const Profile = () => {
                 <Typography variant="body1" className="info">
                   Gender: {editedUser.gender}
                 </Typography>
-              </Grid>
-              <Grid item>
-                {!isEditing ? (
-                  <Button
-                    variant="contained"
-                    onClick={handleEdit}
-                    className="edit-button">
-                    Edit
-                  </Button>
-                ) : (
-                  <div>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleProfilePhotoChange}
-                    />
-                    <Button
-                      variant="contained"
-                      onClick={handleSave}
-                      className="save-button">
-                      Save
-                    </Button>
-                  </div>
-                )}
               </Grid>
             </Grid>
           </Grid>
@@ -139,6 +149,30 @@ const Profile = () => {
               </Grid>
             </Grid>
           )}
+          <Grid item>
+            {!isEditing ? (
+              <Button
+                variant="contained"
+                onClick={handleEdit}
+                className="edit-button">
+                Edit
+              </Button>
+            ) : (
+              <div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleProfilePhotoChange}
+                />
+                <Button
+                  variant="contained"
+                  onClick={handleSave}
+                  className="save-button">
+                  Save
+                </Button>
+              </div>
+            )}
+          </Grid>
         </CardContent>
       </Card>
     </Container>

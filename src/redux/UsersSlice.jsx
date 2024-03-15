@@ -27,6 +27,10 @@ export const UsersSlice = createSlice({
 
 export const { login, logout, updateUser, fetchUser } = UsersSlice.actions;
 
+// Selector for fetching the userId
+export const selectUserId = (state) =>
+  state.user.user ? state.user.user._id : null;
+
 export const selectUser = (state) => state.user.user;
 
 export default UsersSlice.reducer;

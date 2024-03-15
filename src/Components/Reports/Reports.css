@@ -1,9 +1,26 @@
 .reports-container {
-  padding: 20px;
+  text-align: left; /* Align text to left */
+  /* padding: 20px;  */
 }
 
-canvas {
-  max-width: 800px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+.reports-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.reports-list {
+  list-style: none;
+  padding: 0;
+}
+
+.reports-list li {
+  font-size: 16px;
+  margin-bottom: 0.003px;
+}
+
+.reports-image {
+  max-width: 500px; /* Increase size of the image */
+  height: auto;
+  margin-top: 20px; /* Increased margin for spacing */
 }

@@ -100,20 +100,18 @@ const Notifications = () => {
                       <span
                         style={{
                           color:
-                            notification.remainingInventory <= 5
-                              ? "red"
-                              : "inherit",
+                            notification.inventory <= 5 ? "red" : "inherit",
                         }}>
-                        {notification.remainingInventory}
+                        {notification.inventory}
                       </span>
                       <br />
-                      {notification.remainingInventory >= 1 &&
-                        notification.remainingInventory <= 5 && (
+                      {notification.inventory >= 1 &&
+                        notification.inventory <= 5 && (
                           <span className="restock-message">
                             Restock this product!
                           </span>
                         )}
-                      {notification.remainingInventory === 0 && (
+                      {notification.nventory === 0 && (
                         <span className="restock-message">
                           Item out of Stock, restock this item immediately!
                         </span>

@@ -70,12 +70,13 @@ const Bills = () => {
                 <div>
                   <h4 style={{ fontSize: "1.2em" }}>Product Details:</h4>
                   <p style={{ fontSize: "0.95em" }}>
-                    Name: {bill.product.name}
+                    Name: {bill.product.productName}
                   </p>
-                  <p style={{ fontSize: "1.1em" }}>
-                    Price: ₹{bill.product.price}
-                  </p>
+                  <p style={{ fontSize: "1.1em" }}>Price: ₹{bill.price}</p>
                   <p style={{ fontSize: "1.1em" }}>Quantity: {bill.quantity}</p>
+                  <p style={{ fontSize: "1.1em" }}>
+                    Total Amount: {bill.amount}
+                  </p>
                 </div>
               ) : (
                 <p style={{ fontSize: "1.1em" }}>
