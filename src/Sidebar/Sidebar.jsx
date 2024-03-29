@@ -54,7 +54,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       style={{ backgroundColor: "#171717", color: "#ffffff" }}>
       <div className="sidebar-title">
         <div className="sidebar-brand">
-          <BsSteam className="icon_header" size={40} /> Admin Panel
+          <BsSteam className="icon_header" size={40} /> Inframax
         </div>
         {/* Conditionally render the close button if sidebar is open */}
         {openSidebarToggle && (
