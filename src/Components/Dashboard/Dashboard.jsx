@@ -21,14 +21,14 @@ const Dashboard = () => {
       try {
         setLoading(true); // Start loading animation
         const inventoryResponse = await axios.get(
-          "http://192.168.3.236:3000/api/products/getproducts"
+          "http://192.168.182.191:3000/api/products/getproducts"
         );
         const inventoryData = inventoryResponse.data.result;
         const totalProductsInInventory = inventoryData.length;
         setInventoryCount(totalProductsInInventory);
 
         const billResponse = await axios.get(
-          "http://192.168.3.236:3000/api/sales/show"
+          "http://192.168.182.191:3000/api/sales/show"
         );
         const billData = billResponse.data.result;
         const numberOfBills = billData.length;
@@ -92,15 +92,20 @@ const Dashboard = () => {
             className="card"
             key={index}
             onClick={() => handleCardClick(data.path)}>
-            <WrapperComp Component={data.component} />
-            <div className="card-content">
-              <h2>{data.title}</h2>
-              <p>{data.value}</p>
-            </div>
+            {loading && <div className="spinner" />}{" "}
+            {/* Show spinner in card */}
+            {!loading && (
+              <>
+                <WrapperComp Component={data.component} />
+                <div className="card-content">
+                  <h2>{data.title}</h2>
+                  <p>{data.value}</p>
+                </div>
+              </>
+            )}
           </div>
         ))}
       </div>
-      {loading && <div className="spinner" />}
     </main>
   );
 };

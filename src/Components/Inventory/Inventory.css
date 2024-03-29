@@ -28,6 +28,7 @@
 .product {
   width: 250px; /* Smaller width */
   height: 400px; /* Smaller height */
+  margin-left: 25px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Reduced shadow */

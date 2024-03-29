@@ -41,7 +41,7 @@ function Inventory() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://192.168.3.236:3000/api/products/getproducts"
+        "http://192.168.182.191:3000/api/products/getproducts"
       );
       setMyData(
         response.data.result.map((product) => ({
@@ -63,7 +63,7 @@ function Inventory() {
 
   const handleAddProduct = async () => {
     try {
-      setIsAddingProduct(true); // Set loading state to true
+      setIsAddingProduct(true);
       const formData = new FormData();
       formData.append("name", name);
       formData.append("price", price);
@@ -72,7 +72,7 @@ function Inventory() {
       formData.append("image", image);
 
       await axios.post(
-        "http://192.168.3.236:3000/api/products/createProduct",
+        "http://192.168.182.191:3000/api/products/createProduct",
         formData,
         {
           headers: {

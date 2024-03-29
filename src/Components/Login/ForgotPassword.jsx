@@ -44,7 +44,7 @@ const ForgotPassword = () => {
     console.log("Submitting forgot password request with email:", values.email);
     try {
       const response = await axios.post(
-        "http://192.168.3.237:5770/api/pass/forgot-password",
+        "http://192.168.182.191:3000/api/pass/forgot-password",
         { email: values.email }
       );
       console.log("Forgot password request successful:", response.data);
