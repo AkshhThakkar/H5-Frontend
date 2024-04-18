@@ -12,7 +12,7 @@ const Bills = () => {
     const fetchBills = async () => {
       try {
         const response = await axios.get(
-          "http://192.168.182.191:3000/api/sales/show"
+          "http://localhost:3000/api/sales/show"
         );
         console.log("Response from backend:", response.data);
         setBills(response.data.result);

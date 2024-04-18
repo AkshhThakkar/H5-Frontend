@@ -246,13 +246,10 @@ const Profile = () => {
 
       console.log("Data being sent to the backend:", formData);
 
-      const response = await fetch(
-        "http://192.168.182.191:3000/api/user/profile",
-        {
-          method: "PUT",
-          body: formData,
-        }
-      );
+      const response = await fetch("http://localhost:3000/api/user/profile", {
+        method: "PUT",
+        body: formData,
+      });
 
       if (!response.ok) {
         throw new Error("Failed to update user.");

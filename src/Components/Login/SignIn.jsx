@@ -49,7 +49,7 @@ const Login = () => {
 
   function handleLogin(payload, props) {
     axios
-      .post("http://192.168.182.191:3000/api/user/login", payload)
+      .post("http://localhost:3000/api/user/login", payload)
       .then((res) => {
         console.log("Response data:", res.data);
         if (res.data && res.data.result && res.data.result.token) {

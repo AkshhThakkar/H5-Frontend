@@ -339,7 +339,7 @@ function Sales() {
   async function fetchProducts() {
     try {
       const response = await fetch(
-        "http://192.168.182.191:3000/api/products/getproducts"
+        "http://localhost:3000/api/products/getproducts"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch products");
@@ -398,16 +398,13 @@ function Sales() {
         })),
       };
 
-      const response = await fetch(
-        "http://192.168.182.191:3000/api/sales/create",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formattedData),
-        }
-      );
+      const response = await fetch("http://localhost:3000/api/sales/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formattedData),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to send sales data to backend");

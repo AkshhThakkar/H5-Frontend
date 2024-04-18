@@ -60,7 +60,7 @@ const ResetPassword = () => {
     const newPassword = payload.password;
 
     axios
-      .post("http://192.168.182.191:3000/api/pass/reset", {
+      .post("http://localhost:3000/api/pass/reset", {
         token: token.get("token"),
         id: id.get("id"),
         newPassword: newPassword,

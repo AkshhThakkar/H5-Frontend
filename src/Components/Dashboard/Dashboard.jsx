@@ -21,14 +21,14 @@ const Dashboard = () => {
       try {
         setLoading(true); // Start loading animation
         const inventoryResponse = await axios.get(
-          "http://192.168.182.191:3000/api/products/getproducts"
+          "http://localhost:3000/api/products/getproducts"
         );
         const inventoryData = inventoryResponse.data.result;
         const totalProductsInInventory = inventoryData.length;
         setInventoryCount(totalProductsInInventory);
 
         const billResponse = await axios.get(
-          "http://192.168.182.191:3000/api/sales/show"
+          "http://localhost:3000/api/sales/show"
         );
         const billData = billResponse.data.result;
         const numberOfBills = billData.length;

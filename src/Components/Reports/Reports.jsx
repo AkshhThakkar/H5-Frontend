@@ -9,7 +9,7 @@ const Reports = () => {
     const fetchMonthlyReport = async () => {
       try {
         const response = await fetch(
-          "http://192.168.182.191:3000/api/report/monthlysales/3/2024"
+          "http://localhost:3000/api/report/monthlysales/3/2024"
         );
         const responseData = await response.json();
 
