@@ -1,0 +1,105 @@
+.notifications-container {
+  width: 1080px;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #333;
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.notification-history {
+  margin-top: 20px;
+}
+
+/* Notification item styles */
+.notification-item {
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #444;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timestamp {
+  margin-right: 15px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.message {
+  flex-grow: 1;
+  font-size: 16px;
+}
+
+.dismiss-button {
+  padding: 8px 12px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dismiss-button:hover {
+  background-color: #cc0000;
+}
+
+/* Additional styles for restock message */
+.restock-message {
+  margin-left: 10px;
+  font-style: italic;
+  color: red;
+}
+
+/* Style for red inventory numbers */
+.red-inventory {
+  color: #fff;
+}
+
+.clear-notifications {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.clear-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clear-button:hover {
+  background-color: #0056b3;
+}
+
+.clear-button:active {
+  transform: translateY(1px);
+}
+
+.clear-button:focus {
+  outline: none;
+}
+
+.view-button {
+  padding: 7px 14px; /* Increase padding for larger size */
+  font-size: 15px; /* Adjust font size as needed */
+  margin-left: 460px; /* Adjust margin as needed */
+  border-radius: 7px;
+  background-color: #007bff;
+  color: #fff;
+}

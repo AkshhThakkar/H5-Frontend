@@ -1,0 +1,33 @@
+.reports-container {
+  position: relative;
+  text-align: left;
+  /* padding: 20px; */
+}
+
+.reports-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: -55px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.reports-list {
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.reports-list li {
+  font-size: 16px;
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+.reports-image {
+  max-width: auto; /* Increase size of the image */
+  height: auto;
+  margin-top: -30px; /* Increased margin for spacing */
+}

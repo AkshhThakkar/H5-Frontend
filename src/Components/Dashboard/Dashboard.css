@@ -1,0 +1,95 @@
+/* Dashboard.css */
+
+/* Add styles for the loading animation */
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  animation: spin 1s linear infinite;
+  color: white; /* Set color to white */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  background-color: #222;
+  padding-top: 20px;
+}
+
+.main-title {
+  text-align: center;
+}
+
+.main-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.card {
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  margin: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: calc(200px * 1.2);
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+  font-size: calc(36px * 1.2);
+  margin-bottom: 10px;
+  color: #fff; /* Set color to white */
+}
+
+.card-content {
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin: 0;
+  font-size: calc(1.2rem * 1.2);
+  color: #fff;
+}
+
+p {
+  margin: 0;
+  font-size: calc(1rem * 1.2);
+  color: #fff;
+}

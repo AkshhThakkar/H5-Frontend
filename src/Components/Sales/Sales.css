@@ -1,0 +1,101 @@
+html,
+body {
+  overflow: auto; /* Make the whole page scrollable */
+}
+
+.container-fluid {
+  margin-top: 20px;
+  zoom: 95%; /* Adjust zoom level */
+}
+
+h1 {
+  margin-bottom: 10px; /* Reduce margin-bottom */
+  margin-top: -25px; /* Adjust margin-top */
+  font-size: 24px; /* Increase font size of h1 */
+}
+
+.table th,
+.table td {
+  padding: 10px; /* Add padding to all table cells */
+}
+
+.table th {
+  background-color: #2020;
+  text-align: left; /* Align table header text to the left */
+  color: white; /* Font color for table headers */
+}
+
+/* Set background color of sales details boxes to white */
+.table-bordered {
+  background-color: #2020;
+  color: white; /* Font color for table text */
+}
+
+/* Increase font size of table headers */
+.table th,
+.table td {
+  font-size: 18px;
+}
+
+/* Add space between all table cells */
+.table th,
+.table td {
+  padding-right: 20px;
+}
+
+.btn-success {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  color: white;
+  margin-bottom: 20px; /* Add margin-bottom to the button */
+  padding: 10px 20px; /* Add padding to the button */
+  border-radius: 5px; /* Add border-radius for rounded corners */
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #4cae4c;
+  border-color: #4cae4c;
+  color: white;
+}
+
+.btn-success:active {
+  background-color: #398439;
+  border-color: #398439;
+  color: white;
+}
+
+.sales-details td {
+  padding-right: 20px;
+}
+
+.white-box {
+  background-color: #ffffff; /* Set background color to white */
+  color: black; /* Font color for text */
+}
+/* Hide the default scrollbar */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Show scrollbar on hover */
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background: #ccc;
+  width: 6px; /* Adjust scrollbar width when visible */
+}
