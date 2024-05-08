@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import RAvatar from "../../Assets/RAvatar.gif";
+import RAvatar from "../../assets/RAvatar.gif";
 import {
   Grid,
   Paper,

@@ -1,5 +1,5 @@
 import React from "react";
-import NOTFOUND from "../../Assets/Not_found.png";
+import NOTFOUND from "../../assets/Not_found.png";
 import { Typography, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 

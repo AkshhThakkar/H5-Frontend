@@ -316,7 +316,7 @@
 
 // export default Sales;
 import React, { useState, useEffect } from "react";
-import "./sales.css";
+import "./Sales.css";
 
 function Sales() {
   const [price, setPrice] = useState(0);

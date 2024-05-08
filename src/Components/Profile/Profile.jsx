@@ -182,8 +182,8 @@
 // export default Profile;
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectUser, selectUserId } from "../../Redux/UsersSlice";
-import { updateUser } from "../../Redux/UsersSlice";
+import { selectUser, selectUserId } from "../../redux/usersSlice";
+import { updateUser } from "../../redux/usersSlice";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

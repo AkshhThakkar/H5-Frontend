@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import AvatarGIF from "../../Assets/Avatar.gif";
+import AvatarGIF from "../../assets/Avatar.gif";
 import {
   Paper,
   Avatar,
@@ -20,7 +20,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
-import { login } from "../../Redux/UsersSlice";
+import { login } from "../../redux/usersSlice";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 

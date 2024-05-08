@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ForgotGIF from "../../Assets/Forgot.gif";
+import ForgotGIF from "../../assets/Forgot.gif";
 import {
   Grid,
   Paper,

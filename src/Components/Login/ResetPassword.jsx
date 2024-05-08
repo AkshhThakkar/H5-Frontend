@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Reset from "../../Assets/Reset.gif";
+import Reset from "../../assets/Reset.gif";
 import {
   Grid,
   Paper,

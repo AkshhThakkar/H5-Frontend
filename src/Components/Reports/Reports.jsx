@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./reports.css"; // Import the CSS file
+import "./Reports.css"; // Import the CSS file
 
 const Reports = () => {
   const [monthlyReport, setMonthlyReport] = useState(null);
@@ -9,7 +9,7 @@ const Reports = () => {
     const fetchMonthlyReport = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/report/monthlysales/3/2024"
+          "http://localhost:3000/api/report/monthlysales/5/2024"
         );
         const responseData = await response.json();
 
@@ -46,7 +46,7 @@ const Reports = () => {
     <div className="reports-container">
       {monthlyReport && (
         <div>
-          <h2 className="reports-header">Monthly Report 3-2024</h2>
+          <h2 className="reports-header">Monthly Report 5-2024</h2>
           <ul className="reports-list">
             <li>Total Sales: {monthlyReport.totalSales}</li>
             <li>Total Profit: {monthlyReport.profit}</li>
