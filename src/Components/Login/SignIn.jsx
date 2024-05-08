@@ -20,7 +20,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
-import { login } from "../../redux/usersSlice";
+import { login } from "../../redux/UsersSlice";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 

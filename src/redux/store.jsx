@@ -9,7 +9,7 @@
 
 // export default store;
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./usersSlice";
+import userReducer from "./UsersSlice";
 
 // Function to load state from local storage
 const loadState = () => {

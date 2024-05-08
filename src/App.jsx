@@ -15,7 +15,7 @@ import SignIn from "./Components/Login/SignIn";
 import ForgotPassword from "./Components/Login/ForgotPassword";
 import MaybeShowSidebar from "./Sidebar/MaybeShowSidebar";
 import MaybeShowHeader from "./Header/MaybeShowHeader";
-import SignUp from "./Components/Login/SignUp";
+import SignUp from "./Components/Login/Signup";
 import ResetPassword from "./Components/Login/ResetPassword";
 import NotFound from "./Components/NotFound/index";
 
