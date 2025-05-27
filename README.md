@@ -21,7 +21,7 @@ The ERP System Frontend is a single-page application (SPA) that consumes the API
 
 * **React.js:** JavaScript library for building user interfaces
 * **React Router:** For declarative routing
-* **Redux / Zustand / React Context (choose one):** For state management (e.g., Redux Toolkit)
+* **Redux:** For state management (e.g., Redux Toolkit)
 * **Axios:** For making HTTP requests to the backend
 * **Tailwind CSS / Material-UI / Bootstrap:** For styling and UI components
 * **Vite:** For build tool / boilerplate
