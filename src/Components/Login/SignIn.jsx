@@ -8,16 +8,16 @@ import {
   Button,
   Typography,
   Grid,
-} from "@material-ui/core";
+  FormControlLabel,
+  Checkbox,
+  CircularProgress,
+} from "@mui/material";
 import {
   RemoveRedEyeRounded,
   RemoveRedEyeOutlined,
   Person,
   Lock,
-} from "@material-ui/icons";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import CircularProgress from "@material-ui/core/CircularProgress";
+} from "@mui/icons-material";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
 import { login } from "../../redux/UsersSlice";

@@ -8,9 +8,8 @@ import {
   TextField,
   Button,
   CircularProgress,
-} from "@material-ui/core";
-import { EmailRounded } from "@material-ui/icons";
-
+} from "@mui/material";
+import { EmailRounded } from "@mui/icons-material";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";

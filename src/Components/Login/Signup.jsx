@@ -1,5 +1,6 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import RAvatar from "../../assets/RAvatar.gif";
+
 import {
   Grid,
   Paper,
@@ -7,7 +8,13 @@ import {
   Typography,
   TextField,
   Button,
-} from "@material-ui/core";
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormLabel,
+  Checkbox,
+} from "@mui/material";
+
 import {
   RemoveRedEyeRounded,
   RemoveRedEyeOutlined,
@@ -15,15 +22,10 @@ import {
   Lock,
   PhoneAndroidRounded,
   EmailRounded,
-} from "@material-ui/icons";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormLabel from "@material-ui/core/FormLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+} from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage, useFormik } from "formik";
-import { FormHelperText } from "@material-ui/core";
+import { FormHelperText } from "@mui/material";
 import * as Yup from "yup";
 import axios from "axios";
 

@@ -9,9 +9,12 @@ import {
   Button,
   CircularProgress,
   Snackbar,
-} from "@material-ui/core";
-import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
-import { RemoveRedEyeRounded, RemoveRedEyeOutlined } from "@material-ui/icons";
+} from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import {
+  RemoveRedEyeRounded,
+  RemoveRedEyeOutlined,
+} from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";

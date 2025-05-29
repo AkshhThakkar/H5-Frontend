@@ -1,6 +1,6 @@
 import React from "react";
 import NOTFOUND from "../../assets/Not_found.png";
-import { Typography, Button } from "@material-ui/core";
+import { Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
